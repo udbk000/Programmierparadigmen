@@ -7,6 +7,8 @@
  */
 public class ecoBuilding implements Building{
 
+    private final int AGE_EXPECTATION = 50;
+
     /**
      * Variable co2Emissions defines the amount of CO2 emissions produced by an ecoBuilding in tons.
       */
@@ -24,9 +26,9 @@ public class ecoBuilding implements Building{
 
     /**
      * Variable satisfaction is an index of the average satisfaction of an inhabitant in this building.
-     * This variable can only accept values between 0 (low satisfaction) and 100 (max satisfaction).
+     * This variable can only accept values between 0.0 (low satisfaction) and 100.0 (max satisfaction).
       */
-    private int satisfaction;
+    private double satisfaction;
 
     /**
      * Variable age refers to the age of the building. It stands for the years which this building has been standing.
@@ -41,6 +43,12 @@ public class ecoBuilding implements Building{
     private int inhabitants;
 
     /**
+     * This variable reflects the condition of the building, ranging from 0.0 to 100.0, 100.0 being the ideal condition
+     * immediately after the construction. Conditions below 50.0 require either renovation or deconstruction.
+     */
+    private double condition;
+
+    /**
      * This constructor is called to construct an ecological building. The variables being set define the minimal cost of
      * every aspect (i.e. variable) of this building. These aspects are made dependent on the size of the building, therefore
      * the amount of people living in this building. The initial values are considered the values of each variable at the moment
@@ -52,8 +60,9 @@ public class ecoBuilding implements Building{
         cost = 200000 + 2500*inhabitants; //200000 = construction cost; 2500 variable costs per inhabitant
         waste = 2.5 + 0.3*inhabitants; //2.5 = waste through construction, 0.3 = waste per inhabitant
         age = 0;
-        satisfaction = 55 + (int) (Math.random() * (85-55)+1); //55= min. initial satisfaction, 85= max. initial satisfaction
+        satisfaction = 55 + (Math.random() * (85-55)+1); //55= min. initial satisfaction, 85= max. initial satisfaction
         co2Emissions = 30 + inhabitants*2; //30 = emissions through construction, 2= emission per inhabitant
+        condition = 100.0;
     }
 
     @Override
@@ -61,11 +70,31 @@ public class ecoBuilding implements Building{
         cost += 2500*inhabitants;
         waste += 0.3*inhabitants;
         age++;
+        if(age >= AGE_EXPECTATION){
+            int x = (int) (Math.random()*100);
+            if(x%3 == 0){
+                this.deconstruct();
+            } else if(x%3 == 1){
+                this.renovate();
+            } else {
+                if(satisfaction > 0){
+                    satisfaction = satisfaction - satisfaction*0.2;
+                }
+            }
+        }
         if(satisfaction > 0){
             satisfaction -= 1;
         }
         co2Emissions += inhabitants*2;
-
+        condition -= 5;
+        if(condition < 50){
+            int x = (int) (Math.random()*100);
+            if(x % 5 == 0){
+                this.deconstruct();
+            } else {
+                this.renovate();
+            }
+        }
     }
 
     @Override
