@@ -1,6 +1,3 @@
-
-
-
 /**
  * This class implements the interface "Building" as an ecologically sustainable Building. Materials used for the construction
  * of this building produce less emissions. As a downside, this type of building is rather costly. Approximately half
@@ -27,7 +24,7 @@ public class ecoBuilding implements Building{
 
     /**
      * Variable satisfaction is an index of the average satisfaction of an inhabitant in this building.
-     * This variable can only accept values between 0.0 (low satisfaction) and 100.0 (max satisfaction).
+     * This variable can only accept values between 0 (low satisfaction) and 100 (max satisfaction).
       */
     private int satisfaction;
 
@@ -61,6 +58,13 @@ public class ecoBuilding implements Building{
 
     @Override
     public void ageOneYear() {
+        cost += 2500*inhabitants;
+        waste += 0.3*inhabitants;
+        age++;
+        if(satisfaction > 0){
+            satisfaction -= 1;
+        }
+        co2Emissions += inhabitants*2;
 
     }
 
