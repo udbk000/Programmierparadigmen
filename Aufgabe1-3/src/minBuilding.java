@@ -1,11 +1,7 @@
 public class minBuilding implements Building{
-    @Override
-    public void build(int apartments, int inhabitants) {
-
-    }
 
     @Override
-    public void age() {
+    public void ageOneYear() {
 
     }
 

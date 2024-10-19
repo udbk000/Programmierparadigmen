@@ -3,17 +3,10 @@ public interface Building {
      *
      */
 
-    /**Method "build" is called to construct the building, sets initial values of variables that are relevant to the
-     * representation of every building; e.g.: CO2 emission, inhabitants' morale, condition,...
-     * int apartments specifies number of apartments in the building
-     * int inhabitants specifies max number of inhabitants of the building
-     */
-    void build(int apartments, int inhabitants);
-
-    /**Method "age" changes values of every aspect relevant to representation of the building, simulating the passage of a
+    /**Method "ageOneYear" changes values of every aspect relevant to representation of the building, simulating the passage of a
      * year. The relevant variable aspects of the building change, the building ages.
      */
-    void age();
+    void ageOneYear();
 
     /**Method "deconstruct" is called in order to deconstruct the building. The reason behind the deconstruction is
      * not further specified, the building ceases to exist when method is called
