@@ -259,7 +259,6 @@ public class ecoBuilding implements Building {
                 System.out.printf("Satisfaction for current decade (partial): %.2f%%%n", avgSatisfactionCurrentDecade);
             }
         }
-
     }
 
     @Override
@@ -274,4 +273,5 @@ public class ecoBuilding implements Building {
         int numberOfYears = Math.min(endYear, yearlySatisfaction.size()) - startYear;
         return totalSatisfaction / numberOfYears; // Durchschnitt berechnen
     }
+
 }

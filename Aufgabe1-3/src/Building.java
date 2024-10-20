@@ -63,4 +63,5 @@ public interface Building {
      */
     double calculateAvgSatisfactionForDecade(int startYear, int endYear);
 
+
 }
