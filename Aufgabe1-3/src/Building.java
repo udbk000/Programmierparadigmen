@@ -24,4 +24,19 @@ public interface Building {
      */
     //diese Methode evtl. im Interface vordefinieren, damit Index für alle Gebäude gleichartig berechnet wird?
     int susIndex();
+
+    /**
+     * This method simulates a fire inside the building. The building is damaged accordingly.
+     */
+    void fire();
+
+    /**
+     * This method simulates an earthquake hitting the building. The building is damaged accordingly.
+     */
+    void earthquake();
+
+    /**
+     * This method simulates flooding inside the building. The building is damaged accordingly.
+     */
+    void flooding();
 }
