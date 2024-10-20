@@ -24,7 +24,7 @@ public class hiQBuilding implements Building {
         this.waste = 3.5 + 0.2 * inhabitants; // Premium materials lead to slightly less waste
         this.age = 1;
         this.yearlySatisfaction = new ArrayList<>();
-        this.satisfaction = 75 + (Math.random() * (95 - 75) + 1); // Higher initial satisfaction for high-quality buildings
+        this.satisfaction = 75 + (Math.random() * (99 - 85) + 1); // Higher initial satisfaction for high-quality buildings
         this.co2Emissions = 40 + inhabitants * 2.5; // Higher emissions due to premium materials
         this.condition = 100.0;
         this.isDeconstructed = false;
@@ -100,9 +100,9 @@ public class hiQBuilding implements Building {
             System.out.println("The high-quality building has been deconstructed. No fire can occur.");
         } else {
             System.out.println("A fire has broken out in the high-quality building.");
-            cost += 15000 + 2000 * inhabitants;
-            co2Emissions += 50 + 5 * inhabitants;
-            waste += 10 + 0.5 * inhabitants;
+            cost += 17000 + 2100 * inhabitants;
+            co2Emissions += 51 + 5.2 * inhabitants;
+            waste += 10 + 0.52 * inhabitants;
             satisfaction = Math.max(satisfaction - 30, 0);
             condition = Math.max(condition - 40, 0);
 
@@ -118,9 +118,9 @@ public class hiQBuilding implements Building {
             System.out.println("The high-quality building has been deconstructed. No earthquake can occur.");
         } else {
             System.out.println("An earthquake has struck the high-quality building.");
-            cost += 25000 + 3000 * inhabitants;
-            co2Emissions += 100 + 10 * inhabitants;
-            waste += 15 + 1 * inhabitants;
+            cost += 30000 + 3200 * inhabitants;
+            co2Emissions += 100 + 11 * inhabitants;
+            waste += 15 + 1.1 * inhabitants;
             satisfaction = Math.max(satisfaction - 40, 0);
             condition = Math.max(condition - 50, 0);
             if (condition <= 15) {
@@ -136,9 +136,9 @@ public class hiQBuilding implements Building {
             System.out.println("The high-quality building has been deconstructed. No flooding can occur.");
         } else {
             System.out.println("The high-quality building has been flooded.");
-            cost += 10000 + 1500 * inhabitants;
-            co2Emissions += 30 + 3 * inhabitants;
-            waste += 8 + 0.4 * inhabitants;
+            cost += 11000 + 1600 * inhabitants;
+            co2Emissions += 33 + 3.1 * inhabitants;
+            waste += 8 + 0.39 * inhabitants;
             satisfaction = Math.max(satisfaction - 20, 0);
             condition = Math.max(condition - 30, 0);
             if (condition <= 15) {

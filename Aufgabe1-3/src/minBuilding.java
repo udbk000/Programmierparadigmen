@@ -100,9 +100,9 @@ public class minBuilding implements Building {
             System.out.println("The minimalist building has been deconstructed. No fire can occur.");
         } else {
             System.out.println("A fire has broken out in the minimalist building.");
-            cost += 15000 + 2000 * inhabitants;
-            co2Emissions += 50 + 5 * inhabitants;
-            waste += 10 + 0.5 * inhabitants;
+            cost += 10000 + 1500 * inhabitants;
+            co2Emissions += 100 + 7 * inhabitants;
+            waste += 14 + 0.7 * inhabitants;
             satisfaction = Math.max(satisfaction - 30, 0);
             condition = Math.max(condition - 40, 0);
 
@@ -118,9 +118,9 @@ public class minBuilding implements Building {
             System.out.println("The minimalist building has been deconstructed. No earthquake can occur.");
         } else {
             System.out.println("An earthquake has struck the minimalist building.");
-            cost += 25000 + 3000 * inhabitants;
-            co2Emissions += 100 + 10 * inhabitants;
-            waste += 15 + 1 * inhabitants;
+            cost += 17000 + 2500 * inhabitants;
+            co2Emissions += 180 + 12 * inhabitants;
+            waste += 18 + 1 * inhabitants;
             satisfaction = Math.max(satisfaction - 40, 0);
             condition = Math.max(condition - 50, 0);
             if (condition <= 15) {
@@ -136,9 +136,9 @@ public class minBuilding implements Building {
             System.out.println("The minimalist building has been deconstructed. No flooding can occur.");
         } else {
             System.out.println("The minimalist building has been flooded.");
-            cost += 10000 + 1500 * inhabitants;
-            co2Emissions += 30 + 3 * inhabitants;
-            waste += 8 + 0.4 * inhabitants;
+            cost += 7000 + 900 * inhabitants;
+            co2Emissions += 34 + 3.5 * inhabitants;
+            waste += 12 + 0.5 * inhabitants;
             satisfaction = Math.max(satisfaction - 20, 0);
             condition = Math.max(condition - 30, 0);
             if (condition <= 15) {
