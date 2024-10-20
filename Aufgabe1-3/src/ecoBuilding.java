@@ -203,12 +203,10 @@ public class ecoBuilding implements Building {
         } else {
             System.out.println("Average stats per inhabitant and year for the ecological building:");
 
-            // Berechnung der Durchschnittswerte pro Bewohner und Jahr
             double avgCostPerInhabitantPerYear = cost / inhabitants /age +1;
             double avgCO2PerInhabitantPerYear = co2Emissions / inhabitants / age+1 ;
             double avgWastePerInhabitantPerYear = waste / inhabitants / age+1;
 
-            // Ausgabe der Statistiken
             System.out.printf("Average cost per inhabitant per year: %.2f EUR%n", avgCostPerInhabitantPerYear);
             System.out.printf("Average CO2 emissions per inhabitant per year: %.2f tons%n", avgCO2PerInhabitantPerYear);
             System.out.printf("Average waste per inhabitant per year: %.2f tons%n", avgWastePerInhabitantPerYear);
