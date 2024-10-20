@@ -138,6 +138,11 @@ public class ecoBuilding implements Building {
     }
 
     @Override
+    public boolean isDeconstructed(){
+        return isDeconstructed;
+    }
+
+    @Override
     public int susIndex() {
         double index = (satisfaction / cost) * (1 / co2Emissions) * (1 / waste);
         return (int) (index * 1000);

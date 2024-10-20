@@ -19,6 +19,9 @@ public interface Building {
      */
     void renovate();
 
+    //grundsätzlich eine getter Methode für das isDeconstructed Feld
+    boolean isDeconstructed();
+
     /**Method "susIndex" calculates the sustainability index of the building and returns it. All aspects are used to calculate the index.
      * @return Index between 1-100; 1... min sustainability, 100... max sustainability
      */
