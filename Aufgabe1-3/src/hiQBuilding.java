@@ -150,7 +150,7 @@ public class hiQBuilding implements Building {
     @Override
     public void printAvgStats() {
         if (isDeconstructed) {
-            System.out.println("This building has been deconstructed. No stats available.");
+            System.out.println("This high-quality building has been deconstructed. No stats available.");
         } else {
             System.out.println("Average stats per inhabitant and year for the high-quality building:");
 
