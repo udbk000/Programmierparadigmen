@@ -214,11 +214,5 @@ public class ecoBuilding implements Building {
             System.out.printf("Average waste per inhabitant per year: %.2f tons%n", avgWastePerInhabitantPerYear);
             System.out.printf("Current average satisfaction: %.2f%%%n", satisfaction);
         }
-
-
     }
-
-
-
-
 }
