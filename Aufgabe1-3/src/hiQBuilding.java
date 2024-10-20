@@ -19,4 +19,24 @@ public class hiQBuilding implements Building{
     public int susIndex() {
         return 0;
     }
+
+    @Override
+    public void fire() {
+
+    }
+
+    @Override
+    public void earthquake() {
+
+    }
+
+    @Override
+    public void flooding() {
+
+    }
+
+    @Override
+    public void printAvgStats() {
+
+    }
 }
