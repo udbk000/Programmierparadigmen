@@ -5,11 +5,11 @@
  * in a minimalist building. Lifespan and cycles of renovation are similar to minimalistic buildings. This type of buidling
  * requires less energy.
  */
-public class ecoBuilding implements Building{
+public class ecoBuilding implements Building {
 
     /**
      * Variable co2Emissions defines the amount of CO2 emissions produced by an ecoBuilding in tons.
-      */
+     */
     private double co2Emissions;
 
     /**
@@ -25,7 +25,7 @@ public class ecoBuilding implements Building{
     /**
      * Variable satisfaction is an index of the average satisfaction of an inhabitant in this building.
      * This variable can only accept values between 0.0 (low satisfaction) and 100.0 (max satisfaction).
-      */
+     */
     private double satisfaction;
 
     /**
@@ -56,22 +56,23 @@ public class ecoBuilding implements Building{
      * every aspect (i.e. variable) of this building. These aspects are made dependent on the size of the building, therefore
      * the amount of people living in this building. The initial values are considered the values of each variable at the moment
      * of construction.
+     *
      * @param inhabitants: defines the size of the building; is immediately written into the variable inhabitants.
      */
-    public ecoBuilding(int inhabitants){
+    public ecoBuilding(int inhabitants) {
         this.inhabitants = inhabitants;
-        cost = 200000 + 2500*inhabitants; //200000 = construction cost; 2500 variable costs per inhabitant
-        waste = 2.5 + 0.3*inhabitants; //2.5 = waste through construction, 0.3 = waste per inhabitant
+        cost = 200000 + 2500 * inhabitants; //200000 = construction cost; 2500 variable costs per inhabitant
+        waste = 2.5 + 0.3 * inhabitants; //2.5 = waste through construction, 0.3 = waste per inhabitant
         age = 0;
-        satisfaction = 55 + (Math.random() * (85-55)+1); //55= min. initial satisfaction, 85= max. initial satisfaction
-        co2Emissions = 30 + inhabitants*2; //30 = emissions through construction, 2= emission per inhabitant
+        satisfaction = 55 + (Math.random() * (85 - 55) + 1); //55= min. initial satisfaction, 85= max. initial satisfaction
+        co2Emissions = 30 + inhabitants * 2; //30 = emissions through construction, 2= emission per inhabitant
         condition = 100.0;
         isDeconstructed = false;
     }
 
     @Override
     public void ageOneYear() {
-        if(isDeconstructed){
+        if (isDeconstructed) {
             System.out.println("This building has been deconstructed.");
         } else {
             cost += 2500 * inhabitants;
@@ -108,13 +109,13 @@ public class ecoBuilding implements Building{
 
     @Override
     public boolean deconstruct() {
-        if(isDeconstructed){
+        if (isDeconstructed) {
             System.out.println("This building has already been deconstructed.");
             return false;
         }
         System.out.println("Deconstructing the ecological building...");
         waste += 10 + 0.5 * inhabitants;
-        co2Emissions += 50+ inhabitants * 3;
+        co2Emissions += 50 + inhabitants * 3;
         satisfaction = 0;
         condition = 0;
         isDeconstructed = true;
@@ -123,14 +124,14 @@ public class ecoBuilding implements Building{
 
     @Override
     public void renovate() {
-        if(isDeconstructed){
+        if (isDeconstructed) {
             System.out.println("This building has been deconstructed and cannot be renovated.");
         } else {
             System.out.println("Renovating the building...");
             cost += 10000 + 1500 * inhabitants;
-            waste += 2 + 0.2*inhabitants;
+            waste += 2 + 0.2 * inhabitants;
             co2Emissions += 20 + inhabitants * 1.5;
-            satisfaction = Math.min(satisfaction +20, 100);
+            satisfaction = Math.min(satisfaction + 20, 100);
             condition = Math.min(condition + 50, 100);
         }
 
@@ -138,24 +139,23 @@ public class ecoBuilding implements Building{
 
     @Override
     public int susIndex() {
-        double index = (satisfaction / cost) * (1/co2Emissions) * (1/waste);
+        double index = (satisfaction / cost) * (1 / co2Emissions) * (1 / waste);
         return (int) (index * 1000);
     }
 
     @Override
     public void fire() {
-        if(isDeconstructed){
+        if (isDeconstructed) {
             System.out.println("The building has been deconstructed. No fire can occur.");
-        }
-        else {
+        } else {
             System.out.println("A fire has broken out in the ecological building.");
-            cost += 15000 + 2000*inhabitants;
-            co2Emissions += 50 + 5*inhabitants;
-            waste += 10 + 0.5*inhabitants;
-            satisfaction = Math.max(satisfaction-30, 0);
+            cost += 15000 + 2000 * inhabitants;
+            co2Emissions += 50 + 5 * inhabitants;
+            waste += 10 + 0.5 * inhabitants;
+            satisfaction = Math.max(satisfaction - 30, 0);
             condition = Math.max(condition - 40, 0);
 
-            if(condition <= 15){
+            if (condition <= 15) {
                 deconstruct();
             }
         }
@@ -163,16 +163,16 @@ public class ecoBuilding implements Building{
 
     @Override
     public void earthquake() {
-        if(isDeconstructed){
+        if (isDeconstructed) {
             System.out.println("This building has been deconstructed. No earthquake can occur.");
         } else {
             System.out.println("An earthquake has struck the building.");
-            cost += 25000+3000*inhabitants;
-            co2Emissions += 100 + 10*inhabitants;
-            waste += 15 + 1*inhabitants;
-            satisfaction = Math.max(satisfaction-40, 0);
-            condition = Math.max(condition-50, 0);
-            if(condition <= 15){
+            cost += 25000 + 3000 * inhabitants;
+            co2Emissions += 100 + 10 * inhabitants;
+            waste += 15 + 1 * inhabitants;
+            satisfaction = Math.max(satisfaction - 40, 0);
+            condition = Math.max(condition - 50, 0);
+            if (condition <= 15) {
                 deconstruct();
             }
         }
@@ -181,16 +181,16 @@ public class ecoBuilding implements Building{
 
     @Override
     public void flooding() {
-        if(isDeconstructed){
+        if (isDeconstructed) {
             System.out.println("This building has been deconstructed. No flooding can occur.");
         } else {
             System.out.println("The building has been flooded.");
-            cost += 10000+1500*inhabitants;
-            co2Emissions += 30 + 3*inhabitants;
-            waste += 8 + 0.4*inhabitants;
-            satisfaction = Math.max(satisfaction-20, 0);
-            condition = Math.max(condition-30,0);
-            if(condition <= 15){
+            cost += 10000 + 1500 * inhabitants;
+            co2Emissions += 30 + 3 * inhabitants;
+            waste += 8 + 0.4 * inhabitants;
+            satisfaction = Math.max(satisfaction - 20, 0);
+            condition = Math.max(condition - 30, 0);
+            if (condition <= 15) {
                 deconstruct();
             }
         }
