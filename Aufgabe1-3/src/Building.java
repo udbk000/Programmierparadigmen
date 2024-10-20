@@ -45,4 +45,22 @@ public interface Building {
      */
     void printAvgStats();
 
+    /**
+     * This method prints the costs divided into decades. Only costs that occurred within the decade are printed.
+     */
+    void printCostsByDecade();
+
+    /**
+     * This method calculates and prints the satisfaction by decade.
+     */
+    void printSatisfactionByDecade();
+
+    /**
+     * This method helps calculate the average satisfaction for every decade.
+     * @param startYear: starting year of the decade (incl.)
+     * @param endYear: last year of the decade (excl.)
+     * @return: average satisfaction in the given time
+     */
+    double calculateAvgSatisfactionForDecade(int startYear, int endYear);
+
 }

@@ -1,3 +1,5 @@
+import java.util.List;
+import java.util.ArrayList;
 /**
  * This class implements the interface "Building" as an ecologically sustainable Building. Materials used for the construction
  * of this building produce less emissions. As a downside, this type of building is rather costly. Approximately half
@@ -27,6 +29,11 @@ public class ecoBuilding implements Building {
      * This variable can only accept values between 0.0 (low satisfaction) and 100.0 (max satisfaction).
      */
     private double satisfaction;
+
+    /**
+     * This list stores the yearly satisfaction values in order to calculate correct averages of satisfaction.
+     */
+    private List<Double> yearlySatisfaction;
 
     /**
      * Variable age refers to the age of the building. It stands for the years which this building has been standing.
@@ -63,7 +70,8 @@ public class ecoBuilding implements Building {
         this.inhabitants = inhabitants;
         cost = 200000 + 2500 * inhabitants; //200000 = construction cost; 2500 variable costs per inhabitant
         waste = 2.5 + 0.3 * inhabitants; //2.5 = waste through construction, 0.3 = waste per inhabitant
-        age = 0;
+        age = 1;
+        yearlySatisfaction = new ArrayList<>();
         satisfaction = 55 + (Math.random() * (85 - 55) + 1); //55= min. initial satisfaction, 85= max. initial satisfaction
         co2Emissions = 30 + inhabitants * 2; //30 = emissions through construction, 2= emission per inhabitant
         condition = 100.0;
@@ -79,21 +87,10 @@ public class ecoBuilding implements Building {
             waste += 0.3 * inhabitants;
             age++;
             int AGE_EXPECTATION = 50;
-            if (age >= AGE_EXPECTATION) {
-                int x = (int) (Math.random() * 100);
-                if (x % 3 == 0) {
-                    this.deconstruct();
-                } else if (x % 3 == 1) {
-                    this.renovate();
-                } else {
-                    if (satisfaction > 0) {
-                        satisfaction = satisfaction - satisfaction * 0.2;
-                    }
-                }
-            }
             if (satisfaction > 0) {
                 satisfaction -= 1;
             }
+            yearlySatisfaction.add(satisfaction);
             co2Emissions += inhabitants * 2;
             condition -= 5;
             if (condition < 50) {
@@ -103,6 +100,9 @@ public class ecoBuilding implements Building {
                 } else {
                     this.renovate();
                 }
+            }
+            if (age >= AGE_EXPECTATION) {
+                deconstruct();
             }
         }
     }
@@ -127,12 +127,12 @@ public class ecoBuilding implements Building {
         if (isDeconstructed) {
             System.out.println("The ecological building has been deconstructed and cannot be renovated.");
         } else {
-            System.out.println("Renovating the ecological building...");
             cost += 10000 + 1500 * inhabitants;
             waste += 2 + 0.2 * inhabitants;
             co2Emissions += 20 + inhabitants * 1.5;
             satisfaction = Math.min(satisfaction + 20, 100);
             condition = Math.min(condition + 50, 100);
+            System.out.println("Renovating the ecological building... Satisfaction improved to: " + satisfaction);
         }
 
     }
@@ -203,14 +203,75 @@ public class ecoBuilding implements Building {
         } else {
             System.out.println("Average stats per inhabitant and year for the ecological building:");
 
-            double avgCostPerInhabitantPerYear = cost / inhabitants /age +1;
-            double avgCO2PerInhabitantPerYear = co2Emissions / inhabitants / age+1 ;
-            double avgWastePerInhabitantPerYear = waste / inhabitants / age+1;
+            double avgCostPerInhabitantPerYear = cost / inhabitants /age;
+            double avgCO2PerInhabitantPerYear = co2Emissions / inhabitants / age ;
+            double avgWastePerInhabitantPerYear = waste / inhabitants / age;
 
             System.out.printf("Average cost per inhabitant per year: %.2f EUR%n", avgCostPerInhabitantPerYear);
             System.out.printf("Average CO2 emissions per inhabitant per year: %.2f tons%n", avgCO2PerInhabitantPerYear);
             System.out.printf("Average waste per inhabitant per year: %.2f tons%n", avgWastePerInhabitantPerYear);
             System.out.printf("Current average satisfaction: %.2f%%%n", satisfaction);
         }
+    }
+
+    @Override
+    public void printCostsByDecade() {
+        if(isDeconstructed){
+            System.out.println("This ecological building has been deconstructed. No stats available.");
+        } else {
+            System.out.println("Costs per decade for the ecological building:");
+            double totalCostPerDecade;
+            int completedDecades = age / 10;
+            int currentDecade = (age / 10) + 1;
+
+            // costs for past decades
+            for (int decade = 1; decade <= completedDecades; decade++) {
+                totalCostPerDecade = 25000 * inhabitants * 10;
+                System.out.printf("Costs for decade %d: %.2f EUR%n", decade, totalCostPerDecade);
+            }
+
+            // costs for current decade
+            int yearsInCurrentDecade = age % 10;
+            double currentDecadeCost = 2500 * inhabitants * yearsInCurrentDecade;
+            System.out.printf("Costs for current decade %d (partial): %.2f EUR%n", currentDecade, currentDecadeCost);
+        }
+    }
+
+    @Override
+    public void printSatisfactionByDecade() {
+        if(isDeconstructed){
+            System.out.println("This ecological building has been deconstructed. No stats available.");
+        } else {
+            System.out.println("Satisfaction per decade for the ecological building:");
+
+            int completedDecades = age / 10; // Anzahl der abgeschlossenen Jahrzehnte
+            int yearsInCurrentDecade = age % 10; // Anzahl der Jahre im laufenden Jahrzehnt
+
+            // Zufriedenheit für abgeschlossene Jahrzehnte berechnen
+            for (int decade = 1; decade <= completedDecades; decade++) {
+                double avgSatisfaction = calculateAvgSatisfactionForDecade((decade - 1) * 10, decade * 10);
+                System.out.printf("Satisfaction for decade %d: %.2f%%%n", decade, avgSatisfaction);
+            }
+
+            // Zufriedenheit für das laufende Jahrzehnt berechnen
+            if (yearsInCurrentDecade > 0) {
+                double avgSatisfactionCurrentDecade = calculateAvgSatisfactionForDecade(completedDecades * 10, age);
+                System.out.printf("Satisfaction for current decade (partial): %.2f%%%n", avgSatisfactionCurrentDecade);
+            }
+        }
+
+    }
+
+    @Override
+    public double calculateAvgSatisfactionForDecade(int startYear, int endYear) {
+        double totalSatisfaction = 0.0;
+
+        // Berechne die Summe der Zufriedenheit für die angegebenen Jahre
+        for (int i = startYear; i < endYear && i < yearlySatisfaction.size(); i++) {
+            totalSatisfaction += yearlySatisfaction.get(i);
+        }
+
+        int numberOfYears = Math.min(endYear, yearlySatisfaction.size()) - startYear;
+        return totalSatisfaction / numberOfYears; // Durchschnitt berechnen
     }
 }

@@ -39,4 +39,19 @@ public class minBuilding implements Building{
     public void printAvgStats() {
 
     }
+
+    @Override
+    public void printCostsByDecade() {
+
+    }
+
+    @Override
+    public void printSatisfactionByDecade() {
+
+    }
+
+    @Override
+    public double calculateAvgSatisfactionForDecade(int startYear, int endYear) {
+        return 0;
+    }
 }
