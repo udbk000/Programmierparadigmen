@@ -39,4 +39,10 @@ public interface Building {
      * This method simulates flooding inside the building. The building is damaged accordingly.
      */
     void flooding();
+
+    /**
+     * This method prints the relevant average stats per inhabitant and year.
+     */
+    void printAvgStats();
+
 }
