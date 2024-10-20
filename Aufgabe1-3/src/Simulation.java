@@ -41,7 +41,7 @@ public class Simulation {
         }
 
         if (!building.isDeconstructed()) {
-            System.out.println("\nThe building reached its maximum lifespan of " + maxYears + " years.");
+            System.out.println("\nThe" + buildingType + " reached its maximum lifespan of " + maxYears + " years.");
             building.deconstruct(); // Deconstruct after maximum age is reached
         }
 
@@ -51,7 +51,7 @@ public class Simulation {
     //Methode für eine zufällige erzeugung einer katastrophe
     private void simulateRandomEvents() {
         int eventChance = random.nextInt(100);
-        if (eventChance < 3) { // 3% chance for a catastrophic event
+        if (eventChance < 3) {
             int eventType = random.nextInt(3);
             switch (eventType) {
                 case 0:
