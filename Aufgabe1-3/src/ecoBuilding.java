@@ -73,7 +73,7 @@ public class ecoBuilding implements Building {
     @Override
     public void ageOneYear() {
         if (isDeconstructed) {
-            System.out.println("This building has been deconstructed.");
+            System.out.println("The ecological building has been deconstructed.");
         } else {
             cost += 2500 * inhabitants;
             waste += 0.3 * inhabitants;
@@ -110,7 +110,7 @@ public class ecoBuilding implements Building {
     @Override
     public boolean deconstruct() {
         if (isDeconstructed) {
-            System.out.println("This building has already been deconstructed.");
+            System.out.println("The ecological building has already been deconstructed.");
             return false;
         }
         System.out.println("Deconstructing the ecological building...");
@@ -125,9 +125,9 @@ public class ecoBuilding implements Building {
     @Override
     public void renovate() {
         if (isDeconstructed) {
-            System.out.println("This building has been deconstructed and cannot be renovated.");
+            System.out.println("The ecological building has been deconstructed and cannot be renovated.");
         } else {
-            System.out.println("Renovating the building...");
+            System.out.println("Renovating the ecological building...");
             cost += 10000 + 1500 * inhabitants;
             waste += 2 + 0.2 * inhabitants;
             co2Emissions += 20 + inhabitants * 1.5;
@@ -146,7 +146,7 @@ public class ecoBuilding implements Building {
     @Override
     public void fire() {
         if (isDeconstructed) {
-            System.out.println("The building has been deconstructed. No fire can occur.");
+            System.out.println("The ecological building has been deconstructed. No fire can occur.");
         } else {
             System.out.println("A fire has broken out in the ecological building.");
             cost += 15000 + 2000 * inhabitants;
@@ -164,9 +164,9 @@ public class ecoBuilding implements Building {
     @Override
     public void earthquake() {
         if (isDeconstructed) {
-            System.out.println("This building has been deconstructed. No earthquake can occur.");
+            System.out.println("The ecological building has been deconstructed. No earthquake can occur.");
         } else {
-            System.out.println("An earthquake has struck the building.");
+            System.out.println("An earthquake has struck the ecological building.");
             cost += 25000 + 3000 * inhabitants;
             co2Emissions += 100 + 10 * inhabitants;
             waste += 15 + 1 * inhabitants;
@@ -182,9 +182,9 @@ public class ecoBuilding implements Building {
     @Override
     public void flooding() {
         if (isDeconstructed) {
-            System.out.println("This building has been deconstructed. No flooding can occur.");
+            System.out.println("The ecological building has been deconstructed. No flooding can occur.");
         } else {
-            System.out.println("The building has been flooded.");
+            System.out.println("The ecological building has been flooded.");
             cost += 10000 + 1500 * inhabitants;
             co2Emissions += 30 + 3 * inhabitants;
             waste += 8 + 0.4 * inhabitants;
