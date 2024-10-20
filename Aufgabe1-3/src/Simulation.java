@@ -42,7 +42,6 @@ public class Simulation {
 
         if (!building.isDeconstructed()) {
             System.out.println("\nThe" + buildingType + " reached its maximum lifespan of " + maxYears + " years.");
-            building.deconstruct(); // Deconstruct after maximum age is reached
         }
 
         printSimulationResults();
