@@ -32,7 +32,7 @@ public class Simulation {
                 System.out.println("The " + buildingType + " has been deconstructed after " + (year - 1) + " years.");
                 break;
             }
-            System.out.println("\nYear " + year + "of the " + buildingType + ":");
+            System.out.println("\nYear " + year + " of the " + buildingType + ":");
             building.ageOneYear();
             simulateRandomEvents();
             if (random.nextInt(100) < 15) {
