@@ -1,4 +1,6 @@
 public class Szenario {
+
+
     private String name;
 
     private float co2Emission;
@@ -10,8 +12,15 @@ public class Szenario {
     //per m2
     private float costs;
 
-    public Szenario(){
+    //possible landscapes
+    enum Landscape{
+        CITY, FOREST, DESERT, COAST, MOUNTAIN
+    }
 
+    private Landscape landscape;
+
+    public Szenario(){
+        //switch for costs, lifespan, catastrophe coefficients
     }
 
 }

@@ -32,14 +32,12 @@ public class Simulation {
                 System.out.println("The " + buildingType + " has been deconstructed after " + (year - 1) + " years.");
                 break;
             }
-            System.out.println("\nYear " + year + " of the " + buildingType + ":");
             building.ageOneYear();
             simulateRandomEvents();
             if (random.nextInt(100) < 15) {
                 building.renovate();
             }
         }
-
         if (!building.isDeconstructed()) {
             System.out.println("\nThe" + buildingType + " reached its maximum lifespan of " + maxYears + " years.");
         }

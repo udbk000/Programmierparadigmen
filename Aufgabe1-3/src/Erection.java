@@ -5,8 +5,6 @@ public class Erection {
 
     private int inhabitants;
 
-    private Landscape landscape;
-
     private int area;
 
     public Erection(){
