@@ -1,6 +1,7 @@
 /**
  * Wer hat was gemacht?
  * Usaid Al-Dabak, 12216291: Interface "Building" und die Klassen "ecoBuilding", "minBuilding" und "hiQBuilding" implementiert.
+ * Stefan Slanar, 12327076: Test Klasse
  */
 
 /** this class calls the beginning of the simulation, returns the results and is
