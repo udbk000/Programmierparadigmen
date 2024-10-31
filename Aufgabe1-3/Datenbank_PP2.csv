@@ -1,7 +1,7 @@
-Szenario_Name,Co2-Ausstoß,Material,Abfall,
-Schule,9.4,Beton,17,
-Wohnhaus,7,Beton,9,
-Holzhütte,2,Holz,4,
-Fabrik,25,Beton,18,
-Brücke,3,Metall,5,
-Autobahn,21,Asphalt,10,
+Szenario_Name,Co2-Ausstoß,Material,Abfall,Kosten
+Schule,9.4,Beton,17,3100
+Wohnhaus,7,Beton,9,2800
+Holzhütte,2,Holz,4,1400
+Fabrik,25,Beton,18,2700
+Brücke,3,Metall,5,1500
+Autobahn,21,Asphalt,10,3000
