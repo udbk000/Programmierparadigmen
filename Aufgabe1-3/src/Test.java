@@ -1,6 +1,7 @@
 /**
+ * Aufgabe 2_
  * Wer hat was gemacht?
- * Usaid Al-Dabak, 12216291: Interface "Building" und die Klassen "ecoBuilding", "minBuilding" und "hiQBuilding" implementiert.
+ * Usaid Al-Dabak, 12216291: Datenbank angelegt, Klasse für Gebäude und Szenario implementiert.
  * Stefan Slanar, 12327076: Test Klasse
  */
 
