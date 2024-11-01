@@ -23,4 +23,21 @@ public class Szenario {
         //switch for costs, lifespan, catastrophe coefficients
     }
 
+    public String getName(){
+        return name;
+    }
+
+    public float getCo2Emission() {
+        return co2Emission;
+    }
+
+    public String getMaterial(){
+        return material;
+    }
+
+    public Landscape getLandscape(){
+        return landscape;
+    }
+
+
 }
