@@ -1,6 +1,5 @@
 public class Szenario {
 
-
     private String name;
 
     private float co2Emission;
@@ -33,6 +32,10 @@ public class Szenario {
 
     public String getMaterial(){
         return material;
+    }
+
+    public float getWaste(){
+        return waste;
     }
 
     public Landscape getLandscape(){
