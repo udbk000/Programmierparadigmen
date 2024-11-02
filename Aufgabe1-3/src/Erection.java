@@ -63,6 +63,12 @@ public class Erection {
     }
 
     public void ageOneYear() {
+        /**
+         * STYLE:
+         * Der Prozess der Alterung um ein Jahr kann als eine Prozedur angesehen werden. Diese Methode ist an sich prozedural implementiert,
+         * da diese Prozedur eine bestimme Aufgabe erfüllt und hier nicht in andere Methoden oder Klassen ausgeweicht wird. Beispielsweise könnten Methoden
+         * überprüfen, ob Renovierung oder Abbau notwendig sind. Aufgrund des Prozeduralen Stils wird darauf verzichtet.
+         */
         if (isDeconstructed) {
             ;
         } else {
