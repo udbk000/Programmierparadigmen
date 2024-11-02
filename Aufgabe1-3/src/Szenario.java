@@ -12,7 +12,7 @@ public class Szenario {
     private String name;
 
     /**
-     * This float variable provides the amount of co2Emissions produced by this type of building. It is given in 1000t/year.
+     * This float variable provides the amount of co2Emissions produced by one person per year in this building. Given in t/year.
      */
     private float co2Emission;
 
@@ -22,7 +22,7 @@ public class Szenario {
     private String material;
 
     /**
-     * This variable stands for the amount of waste produced by this building per year. Given in 1000t/year.
+     * This variable stands for the amount of waste produced by this building per person per year. Given in 1000t/year.
      */
     private float waste;
 
@@ -36,11 +36,10 @@ public class Szenario {
      */
     private float mainCosts;
 
-
-    //possible landscapes
-    enum Landscape{
-        CITY, FOREST, DESERT, COAST, MOUNTAIN
-    }
+    /**
+     * This variable contains the age expectancy of the building built with this material.
+     */
+    private int materialAge;
 
     /**
      * The landscape in which a building is placed in manipulates the lifespan of the building as well as the probability of different
@@ -48,8 +47,15 @@ public class Szenario {
      */
     private Landscape landscape;
 
-    public Szenario(){
-        //switch for costs, lifespan, catastrophe coefficients
+    public Szenario(String name, float co2Emission, String material, float waste, float constructionCosts, float mainCosts, int materialAge, Landscape landscape) {
+        this.name = name;
+        this.co2Emission = co2Emission;
+        this.material = material;
+        this.waste = waste;
+        this.constructionCosts = constructionCosts;
+        this.mainCosts = mainCosts;
+        this.materialAge = materialAge;
+        this.landscape = landscape;
     }
 
     public String getName(){
@@ -78,6 +84,23 @@ public class Szenario {
 
     public Landscape getLandscape(){
         return landscape;
+    }
+
+    public int getMaterialAge(){ return materialAge; }
+
+
+    /**
+     * Calculates the adjusted life expectancy of the building based on the material age and the landscape's age factor.
+     */
+    public int calculateLifeExpectancy() {
+        return (int) (materialAge * landscape.getAgeFactor());
+    }
+
+    /**
+     * Triggers a random catastrophe based on the landscape.
+     */
+    public void triggerCatastrophe() {
+        System.out.println(landscape.triggerRandomDisaster());
     }
 
 
