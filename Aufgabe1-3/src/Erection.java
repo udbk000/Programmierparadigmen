@@ -7,6 +7,13 @@
 public class Erection {
 
     /**
+     * STYLE:
+     * Diese Klasse ist objektorientiert implementiert. Variablen sind private. Es wird nominal abstrahiert.
+     * Kommentare sind sinnvoll und unterstützen die Abstraktion. Dort, wo es notwendig ist, sind Invarianten gelistet.
+     * Es wurde insofern abstrahiert, als so gut wie die ganze Implementierung lediglich abstrahierte Methoden und Variablen nutzt, ohne viel Code.
+     */
+
+    /**
      * The variable scenario specifies the building that is being constructed. Scenario contains all values needed for the calculation of
      * important occurrences, statistics and the correct simulation of the lifespan of the building.
      */
