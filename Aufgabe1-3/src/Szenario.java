@@ -22,6 +22,11 @@ public class Szenario {
     private String material;
 
     /**
+     * This variable indicates the expected age of a building with this material.
+     */
+    private int materialAge;
+
+    /**
      * This variable stands for the amount of waste produced by this building per person per year. Given in 1000t/year.
      */
     private float waste;
@@ -36,10 +41,6 @@ public class Szenario {
      */
     private float mainCosts;
 
-    /**
-     * This variable contains the age expectancy of the building built with this material.
-     */
-    private int materialAge;
 
     /**
      * The landscape in which a building is placed in manipulates the lifespan of the building as well as the probability of different
@@ -85,8 +86,6 @@ public class Szenario {
     public Landscape getLandscape(){
         return landscape;
     }
-
-    public int getMaterialAge(){ return materialAge; }
 
 
     /**

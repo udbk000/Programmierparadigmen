@@ -42,77 +42,112 @@ public class Erection {
 
     private boolean isDeconstructed;
 
+    /**
+     * This variable keeps track of the age of the building. Cannot be higher than lifeExpect.
+     */
     private int age;
 
-    public Erection(Szenario scenario, int inhabitants, int area){
+    /**
+     * This variable keeps track of additional renovation costs.
+     */
+    private int renovationCosts;
+
+    public Erection(Szenario scenario, int inhabitants, int area) {
         this.scenario = scenario;
         this.inhabitants = inhabitants;
         this.area = area;
         this.lifeExpect = scenario.calculateLifeExpectancy();
         isDeconstructed = false;
         age = 1;
+        renovationCosts = 0;
     }
 
-    public void ageOneYear(){
-        if(isDeconstructed){
+    public void ageOneYear() {
+        if (isDeconstructed) {
             ;
         } else {
             age++;
+            condition = condition - 100 / lifeExpect;
+            if (condition <= 0) {
+                deconstruct();
+            } else if (condition < 20) {
+                int x = (int) (Math.random() * 100);
+                if (x % 4 == 0) {
+                    this.deconstruct();
+                } else {
+                    this.renovate();
+                }
+            }
+            if(age>lifeExpect){
+                deconstruct();
+            }
 
         }
 
     }
 
-    public void renovate(){
-
+    public void renovate() {
+        if (!isDeconstructed) {
+            renovationCosts += Math.random() * inhabitants * 100;
+            condition = Math.min(condition + 60, 100);
+            System.out.println("Renovating the " + scenario.getName());
+        } else {
+            ;
+        }
     }
-    public void deconstruct(){
 
+    public void deconstruct() {
+        if (!isDeconstructed) {
+            isDeconstructed = true;
+        }
     }
 
-    public float soilSealing(){
+    public float soilSealing() {
+
         return 0;
     }
 
-    public float costsPerYear(){
-        if(!isDeconstructed){
-            return scenario.getMainCosts()*inhabitants;
+    public float costsPerYear() {
+        if (!isDeconstructed) {
+            return scenario.getMainCosts() * inhabitants + (renovationCosts / age);
         }
         return 0;
     }
 
-    public float constructionCosts(){
-        if(!isDeconstructed){
+    public float constructionCosts() {
+        if (!isDeconstructed) {
             return scenario.getConstructionCosts() * area;
         }
         return 0;
     }
 
-    public float co2PerYear(){
-        if(!isDeconstructed){
+    public float co2PerYear() {
+        if (!isDeconstructed) {
             return scenario.getCo2Emission() * inhabitants;
         }
         return 0;
     }
 
-    public float wastePerYear(){
-        if(!isDeconstructed){
+    public float wastePerYear() {
+        if (!isDeconstructed) {
             return scenario.getWaste() * inhabitants;
         }
         return 0;
     }
 
-    public void catastrophe(){
-        if(!isDeconstructed){
+    public void catastrophe() {
+        if (!isDeconstructed) {
             scenario.triggerCatastrophe();
         }
 
     }
 
-    public void printStats(){
+    public void printStats() {
         System.out.println();
         System.out.println("*********");
         System.out.println("Building Name: " + scenario.getName());
+        System.out.println("Building Material: " + scenario.getMaterial());
+        System.out.println("Building Location: " + scenario.getLandscape());
         System.out.println("Condition: " + condition + "%");
         System.out.println("Life Expectancy: " + lifeExpect + " years");
         System.out.println("Waste production per Year: " + wastePerYear() + " tons");

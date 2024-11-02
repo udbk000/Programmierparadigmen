@@ -16,6 +16,11 @@ enum Landscape{
      */
     private final String[] disasters;
 
+    /**
+     * The age factor indicates how the landscape affects the lifespan of a building.
+     * ageFactor > 1: The building can stand longer in this landscape.
+     * ageFactor < 1: The building cannot stand for the originally intended time.
+     */
     private final float ageFactor;
 
     Landscape(float ageFactor, float[] catastropheFactor, String... disasters) {
@@ -24,15 +29,7 @@ enum Landscape{
         this.disasters = disasters;
     }
 
-    public float[] getCatastropheFactor() {
-        return catastropheFactor;
-    }
-
     public float getAgeFactor(){ return ageFactor; }
-
-    public String[] getDisasters() {
-        return disasters;
-    }
 
     /**
      * Returns a catastrophe with its associated probability factor, based on a random selection.
@@ -41,4 +38,5 @@ enum Landscape{
         int index = new java.util.Random().nextInt(disasters.length);
         return "Disaster: " + disasters[index] + ", Probability Factor: " + catastropheFactor[index];
     }
+
 }
