@@ -1,5 +1,5 @@
 /**
- * Aufgabe 2_
+ * Aufgabe 2
  * Wer hat was gemacht?
  * Usaid Al-Dabak, 12216291: Datenbank angelegt, Klasse für Gebäude und Szenario implementiert.
  * Stefan Slanar, 12327076: Test Klasse

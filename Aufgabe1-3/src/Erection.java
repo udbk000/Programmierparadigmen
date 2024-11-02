@@ -138,6 +138,7 @@ public class Erection {
     public void catastrophe() {
         if (!isDeconstructed) {
             scenario.triggerCatastrophe();
+            condition -= Math.min((int) (Math.random()*100),90);
         }
 
     }
