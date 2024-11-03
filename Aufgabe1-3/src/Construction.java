@@ -4,7 +4,7 @@
  * implemented in this class in order to return and print all the necessary numbers, statistics and facts.
  */
 
-public class Erection {
+public class Construction {
 
     /**
      * STYLE:
@@ -52,7 +52,7 @@ public class Erection {
      */
     private int renovationCosts;
 
-    public Erection(Szenario scenario, int inhabitants, int area) {
+    public Construction(Szenario scenario, int inhabitants, int area) {
         this.scenario = scenario;
         this.inhabitants = inhabitants;
         this.area = area;
@@ -108,10 +108,6 @@ public class Erection {
         }
     }
 
-    public float soilSealing() {
-
-        return 0;
-    }
 
     public float costsPerYear() {
         if (!isDeconstructed) {
@@ -161,7 +157,6 @@ public class Erection {
         System.out.println("CO2 Emission per Year: " + co2PerYear() + " tons");
         System.out.println("Construction Costs: " + constructionCosts() + " euros");
         System.out.println("Maintenance Costs per Year: " + costsPerYear() + " euros");
-        System.out.println("Soil Sealing: " + soilSealing() + " m2");
         System.out.println("*********");
         System.out.println();
     }
