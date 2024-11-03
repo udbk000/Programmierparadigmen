@@ -11,6 +11,8 @@
 public class Test {
     public static void main(String[] args) {
 
+
+        /*
         int life_expectancy_eco = 50;
         int life_expectancy_min = 50;
         int life_expectancy_hiQ = 100;
@@ -32,6 +34,16 @@ public class Test {
             minSim.runSimulation();
             hiQSim.runSimulation();
 
+
+        }
+
+         */
+
+        CSVReader a = new CSVReader();
+        String[] data = a.data;
+
+        for(String scen : a.data) {
+            System.out.println(scen);
         }
 
     }
