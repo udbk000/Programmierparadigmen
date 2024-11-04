@@ -145,6 +145,22 @@ public class Construction {
 
     }
 
+    public int getLifeExpect(){
+        return lifeExpect;
+    }
+
+    public String getBuildingType(){
+        return scenario.getName();
+    }
+
+    public Szenario getScenario(){
+        return scenario;
+    }
+
+    public boolean isDeconstructed(){
+        return isDeconstructed;
+    }
+
     public void printStats() {
         System.out.println();
         System.out.println("*********");

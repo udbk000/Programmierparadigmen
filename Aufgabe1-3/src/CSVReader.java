@@ -2,63 +2,41 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 public class CSVReader {
 
     // This variable stores the entire data of the database in an array, one line per index
-    public final String[] data;
+    public List<Szenario> loadScenariosFromCSV(String filePath) {
+        List<Szenario> scenarios = new ArrayList<>();
+        String line;
+        String csvSplitBy = ",";  // Assumes CSV uses commas to separate values
 
-    // This variable contains the path to the .csv -file which is used as a data base in this program
-    private String path = "Aufgabe1-3/Datenbank_PP2.csv";
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            // Skip the header line
+            br.readLine();
 
-
-    // Constructor for a CSVReader object
-    public CSVReader() {
-        this.data = readData(path);
-    }
-
-
-    // This method reads the data from the .csv-file and throws exceptions if they occur
-    public String[] readData(String path) {
-
-        String[] data = new String[getLengthOfFile(path)];
-        String line = "";
-        int i = 0;
-
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(path));
-
+            // Read each line and parse the fields
             while ((line = br.readLine()) != null) {
-                data[i++] = Arrays.toString(line.split("\n"));
+                String[] fields = line.split(csvSplitBy);
+
+                String name = fields[0];
+                float co2Emission = Float.parseFloat(fields[1]);
+                String material = fields[2];
+                float waste = Float.parseFloat(fields[3]);
+                float constructionCosts = Float.parseFloat(fields[4]);
+                float mainCosts = Float.parseFloat(fields[5]);
+                int materialAge = Integer.parseInt(fields[6]);
+
+                // Create a Szenario with null for the landscape (to be set later)
+                Szenario scenario = new Szenario(name, co2Emission, material, waste, constructionCosts, mainCosts, materialAge, null);
+                scenarios.add(scenario);
             }
-
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            System.err.println("Error reading CSV file: " + e.getMessage());
         }
-        return data;
-    }
-
-    // This method returns the number of lines of the .csv-file, so that the array data can be declared with the correct size
-    private int getLengthOfFile(String path) {
-        int count = 0;
-
-        try {
-            BufferedReader bufferedReader = new BufferedReader(new FileReader(path));
-            String input;
-
-            while((input = bufferedReader.readLine()) != null)
-            {
-                count++;
-            }
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        } catch (IOException e) {
-        throw new RuntimeException(e);
-        }
-
-        return count;
+        return scenarios;
     }
 }

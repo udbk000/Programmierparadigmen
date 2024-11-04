@@ -87,6 +87,10 @@ public class Szenario {
         return landscape;
     }
 
+    public int getMaterialAge(){
+        return materialAge;
+    }
+
 
     /**
      * Calculates the adjusted life expectancy of the building based on the material age and the landscape's age factor.

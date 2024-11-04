@@ -1,7 +1,7 @@
-Szenario_Name,Co2-Ausstoß,Material,Abfall,Kosten_Errichtung,Kosten_Unterhalt,
-Schule,9.4,Beton,17,1.4,1.1,
-Wohnhaus,7,Beton,9,1.2,0.9,
-Holzhütte,2,Holz,4,0.5,0.1,
-Fabrik,25,Beton,18,2.4,3.5,
-Brücke,3,Metall,5,1.1,0.8,
-Autobahn,21,Asphalt,10,1.1,1.1,
+Szenario_Name,Co2-Ausstoß,Material,Abfall,Kosten_Errichtung,Kosten_Unterhalt,Material_Age
+Schule,9.4,Beton,17,1.4,1.1,80
+Wohnhaus,7,Beton,9,1.2,0.9,80
+Holzhütte,2,Holz,4,0.5,0.1,30
+Fabrik,25,Beton,18,2.4,3.5,80
+Brücke,3,Metall,5,1.1,0.8,50
+Autobahn,21,Asphalt,10,1.1,1.1,20

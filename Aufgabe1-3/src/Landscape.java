@@ -31,6 +31,10 @@ enum Landscape{
 
     public float getAgeFactor(){ return ageFactor; }
 
+    public float[] getCatastropheFactor(){ return catastropheFactor; }
+
+    public String[] getDisasters(){ return disasters; }
+
     /**
      * Returns a catastrophe with its associated probability factor, based on a random selection.
      */
