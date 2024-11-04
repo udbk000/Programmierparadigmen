@@ -2,7 +2,7 @@
  * Aufgabe 2
  * Wer hat was gemacht?
  * Usaid Al-Dabak, 12216291: Datenbank angelegt, Klasse für Gebäude und Szenario implementiert.
- * Stefan Slanar, 12327076: Test Klasse
+ * Stefan Slanar, 12327076: CSVReader Klasse
  */
 
 /** this class calls the beginning of the simulation, returns the results and is
