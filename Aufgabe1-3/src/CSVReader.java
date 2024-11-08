@@ -1,24 +1,16 @@
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class CSVReader {
-
-    // This variable stores the entire data of the database in an array, one line per index
     public List<Szenario> loadScenariosFromCSV(String filePath) {
         List<Szenario> scenarios = new ArrayList<>();
         String line;
-        String csvSplitBy = ",";  // Assumes CSV uses commas to separate values
-
+        String csvSplitBy = ",";
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            // Skip the header line
             br.readLine();
-
-            // Read each line and parse the fields
             while ((line = br.readLine()) != null) {
                 String[] fields = line.split(csvSplitBy);
 
@@ -30,7 +22,6 @@ public class CSVReader {
                 float mainCosts = Float.parseFloat(fields[5]);
                 int materialAge = Integer.parseInt(fields[6]);
 
-                // Create a Szenario with null for the landscape (to be set later)
                 Szenario scenario = new Szenario(name, co2Emission, material, waste, constructionCosts, mainCosts, materialAge, null);
                 scenarios.add(scenario);
             }

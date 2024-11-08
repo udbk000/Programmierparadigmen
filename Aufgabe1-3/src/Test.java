@@ -6,15 +6,9 @@
  * Andrii Makarenko 12229205: Simulation, Test,
  */
 
-/** this class calls the beginning of the simulation, returns the results and is
+/*this class calls the beginning of the simulation, returns the results and is
  * the main point of interaction.
  */
-import org.jetbrains.annotations.NotNull;
-
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Test {
@@ -23,12 +17,12 @@ public class Test {
      */
 
     public static void main(String[] args) {
-        String csvFilePath = "Datenbank_PP2.csv";  // Path to your CSV file
+        String csvFilePath = "Datenbank_PP2.csv";
 
         CSVReader reader = new CSVReader();
         List<Szenario> scenarios = reader.loadScenariosFromCSV(csvFilePath);
 
-        // Loop through each scenario and landscape
+
         for (Szenario scenario : scenarios) {
             for (Landscape landscape : Landscape.values()) {
                 Szenario scenarioWithLandscape = new Szenario(
@@ -42,12 +36,11 @@ public class Test {
                         landscape
                 );
 
-                // Initialize a Construction for this scenario and landscape
-                int inhabitants = 100;   // Example number of inhabitants
-                int area = 5000;         // Example area in m²
+
+                int inhabitants = 100;
+                int area = 5000;
                 Construction construction = new Construction(scenarioWithLandscape, inhabitants, area);
 
-                // Run the simulation for this construction
                 System.out.println("\n--- Simulation for " + scenario.getName() + " in " + landscape + " ---");
                 Simulation simulation = new Simulation(construction);
                 simulation.runSimulation();
