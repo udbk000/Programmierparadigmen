@@ -14,6 +14,23 @@ public class Construction {
      */
 
     /**
+     * GOOD:
+     * Hoher Klassenzusammenhalt. Abhängigkeiten sind auf ein minimum begrenzt.
+     */
+
+    /**
+     * BAD:
+     * Dadurch, dass Szenario kein Interface oder Obertyp ist, kommt es zu keinem dynamischen Binden von Szenarien. Könnte man effizienter implementieren.
+     */
+
+    /**
+     * BAD:
+     * Diese Klasse ist stark abhängig von Szenario. Dadurch entsteht auch eine Abhängigkeit vom Landscape. Dies sind Abhängigkeiten,
+     * die entstanden sind, aufgrund der Notwendigkeit der Datenbank und dem Ziel, den Code möglichst universell einsetzbar zu machen.
+     * Das Ziel ist, dass Szenario notwendige Spezifikationen liefert.
+     */
+
+    /**
      * The variable scenario specifies the building that is being constructed. Scenario contains all values needed for the calculation of
      * important occurrences, statistics and the correct simulation of the lifespan of the building.
      * Precondition: Cannot be null.
@@ -90,6 +107,18 @@ public class Construction {
          * Der Prozess der Alterung um ein Jahr kann als eine Prozedur angesehen werden. Diese Methode ist an sich prozedural implementiert,
          * da diese Prozedur eine bestimme Aufgabe erfüllt und hier nicht in andere Methoden oder Klassen ausgeweicht wird. Beispielsweise könnten Methoden
          * überprüfen, ob Renovierung oder Abbau notwendig sind. Aufgrund des Prozeduralen Stils wird darauf verzichtet.
+         */
+
+        /**
+         * GOOD:
+         * Kontrollfluss gut nachvollziehbar
+         * Keine schwer durchschaubaren Aliase.
+         * Benutzung lokaler Variablen.
+         */
+
+        /**
+         * BAD:
+         * Innerhalb einer Objektorientierten Klasse.
          */
         if (isDeconstructed) {
             ;

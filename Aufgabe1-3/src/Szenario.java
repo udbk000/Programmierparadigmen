@@ -7,6 +7,12 @@
 public class Szenario {
 
     /**
+     * GOOD:
+     * Diese Klasse hat einen hohen Zusammenhalt.
+     * Die Absicht der Klasse ist klar, es sind keine unnötigen Abhängigkeiten. Keine zufälligen Methoden, die der Absicht der Klasse nicht dienen.
+     */
+
+    /**
      * The name of the building. Should identify the building correctly. Cannot be NULL
      */
     private String name;
@@ -42,6 +48,11 @@ public class Szenario {
      */
     private float mainCosts;
 
+
+    /**
+     * GOOD:
+     * Durch die Möglichkeit, neue Landscapes zu erstellen, bleibt der Code gut universell einsetzbar.
+     */
 
     /**
      * The landscape in which a building is placed in manipulates the lifespan of the building as well as the probability of different
