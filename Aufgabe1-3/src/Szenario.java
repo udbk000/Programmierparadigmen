@@ -7,17 +7,18 @@
 public class Szenario {
 
     /**
-     * The name of the building. Should identify the building correctly.
+     * The name of the building. Should identify the building correctly. Cannot be NULL
      */
     private String name;
 
     /**
      * This float variable provides the amount of co2Emissions produced by one person per year in this building. Given in t/year.
+     * Cannot be negative.
      */
     private float co2Emission;
 
     /**
-     * This String variable indicates the material used for this building, giving further information on the lifespan of the building.
+     * This String variable indicates the material used for this building, giving further information on the lifespan of the building. Cannot be NULL
      */
     private String material;
 
@@ -27,27 +28,38 @@ public class Szenario {
     private int materialAge;
 
     /**
-     * This variable stands for the amount of waste produced by this building per person per year. Given in 1000t/year.
+     * This variable stands for the amount of waste produced by this building per person per year. Given in 1000t/year. Cannot be negative.
      */
     private float waste;
 
     /**
-     * This variable provides the costs of the construction of this building. It is given in 1000€/m2.
+     * This variable provides the costs of the construction of this building. It is given in 1000€/m2. Cannot be negative.
      */
     private float constructionCosts;
 
     /**
-     * This variable provides the maintenance costs of this building. It is given in 1000€/user/year.
+     * This variable provides the maintenance costs of this building. It is given in 1000€/user/year. Cannot be negative.
      */
     private float mainCosts;
 
 
     /**
      * The landscape in which a building is placed in manipulates the lifespan of the building as well as the probability of different
-     * catastrophes occurring.
+     * catastrophes occurring. Cannot be NULL.
      */
     private Landscape landscape;
 
+    /**
+     * This constructor is called to specify one particular scenario of a construction.
+     * @param name identifies the scenario, not NULL
+     * @param co2Emission not negative
+     * @param material not NULL
+     * @param waste not negative
+     * @param constructionCosts not negative
+     * @param mainCosts not negative
+     * @param materialAge not negative
+     * @param landscape not NULL, contains information about occurrences
+     */
     public Szenario(String name, float co2Emission, String material, float waste, float constructionCosts, float mainCosts, int materialAge, Landscape landscape) {
         this.name = name;
         this.co2Emission = co2Emission;
@@ -94,6 +106,7 @@ public class Szenario {
 
     /**
      * Calculates the adjusted life expectancy of the building based on the material age and the landscape's age factor.
+     * @return integer value >= 0 indicating the life expectancy of this building in this landscape.
      */
     public int calculateLifeExpectancy() {
         return (int) (materialAge * landscape.getAgeFactor());
