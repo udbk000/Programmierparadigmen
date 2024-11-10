@@ -13,8 +13,8 @@ import java.util.concurrent.*;
  */
 
 public class World {
-    private List<Construction> constructions;
-    private int worldAge;  // Die Dauer, wie lange die Welt existiert
+    private List<Construction> constructions; // Diese List beinhaltet alle Constructions, die in dieser Welt existieren
+    private int worldAge;  // Die Dauer, wie lange die Welt existieren soll (in Jahre)
     private Random random;
     private ExecutorService executor;
 
