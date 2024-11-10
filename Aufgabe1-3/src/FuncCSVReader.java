@@ -1,9 +1,13 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 /**
  * STYLE:
@@ -52,6 +56,18 @@ public class FuncCSVReader {
         return new Szenario(name, co2Emission, material, waste, constructionCosts, mainCosts, materialAge, null);
     };
 
+    public List<Szenario> loadScenariosFromCSVParallel(String filePath) {
+        try {
+            return Files.lines(Paths.get(filePath)) // Datei Zeile für Zeile lesen
+                    .skip(1) // Header überspringen
+                    .parallel() // Parallele Verarbeitung der Daten
+                    .map(createSzenario) // Umwandlung der Zeilen in Szenarien
+                    .collect(Collectors.toList()); // Sammeln der Szenarien
+        } catch (IOException e) {
+            System.err.println("Error reading CSV file: " + e.getMessage());
+            return Collections.emptyList();
+        }
+    }
 
 }
 
