@@ -1,7 +1,7 @@
 /**
- * Aufgabe 2
+ * Aufgabe 3
  * Wer hat was gemacht?
- * Usaid Al-Dabak, 12216291: Datenbank angelegt, Klasse für Gebäude und Szenario implementiert.
+ * Usaid Al-Dabak, 12216291: Kommentare in Construction und Szenario, Welt Klasse konstruiert
  * Stefan Slanar, 12327076: CSVReader, Landscape
  * Andrii Makarenko 12229205: Simulation, Test,
  */
