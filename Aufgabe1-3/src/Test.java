@@ -6,23 +6,21 @@
  * Andrii Makarenko 12229205: Simulation, Test,
  */
 
-/*this class calls the beginning of the simulation, returns the results and is
- * the main point of interaction.
- */
+
 import java.util.List;
 
 public class Test {
-    /*
-    *Style: Die Test-Klasse liest Szenarien (aus CSV oder festgelegt) und durchläuft alle Kombinationen von Szenario und Landscape, um eine Vielzahl von Simulationen ohne manuelles Eingreifen zu ermöglichen.
-     */
 
     public static void main(String[] args) {
+        int simulationYears = 100;
         String csvFilePath = "Datenbank_PP2.csv";
 
-        CSVReader reader = new CSVReader();
-        List<Szenario> scenarios = reader.loadScenariosFromCSV(csvFilePath);
+        World world = new World(simulationYears);
 
+        FuncCSVReader reader = new FuncCSVReader();
+        List<Szenario> scenarios = reader.loadScenariosFromCSV(csvFilePath); //Szenarien aus der Datenbank auslesen
 
+        //Gebäuden mit Szenarien initialisieren und zur Welt hinzufügen
         for (Szenario scenario : scenarios) {
             for (Landscape landscape : Landscape.values()) {
                 Szenario scenarioWithLandscape = new Szenario(
@@ -41,11 +39,13 @@ public class Test {
                 int area = 5000;
                 Construction construction = new Construction(scenarioWithLandscape, inhabitants, area);
 
-                System.out.println("\n--- Simulation for " + scenario.getName() + " in " + landscape + " ---");
-                Simulation simulation = new Simulation(construction);
-                simulation.runSimulation();
-                System.out.println("--- End of Simulation ---\n");
+                world.addConstruction(construction);
             }
         }
+
+
+        //Simulation laufen lassen
+        Simulation simulation = new Simulation(world, simulationYears);
+        simulation.runSimulation();
     }
 }

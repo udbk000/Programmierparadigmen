@@ -75,6 +75,10 @@ public class World {
         }
     }
 
+    public List<Construction> getConstructions() {
+        return constructions;
+    }
+
     // Ressourcen freigeben
     public void shutdown() {
         executor.shutdown();

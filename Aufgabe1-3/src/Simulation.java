@@ -1,70 +1,51 @@
-import java.util.Random;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.*;
 
 public class Simulation {
-    /*
-    * Style: Die Simulation-Klasse verwendet OOP-Prinzipien, indem sie mit Objekten wie Construction, Szenario, und Landscape interagiert. Die Simulation kapselt die Logik der Alterung und Katastrophen in einer übersichtlichen Struktur.
-    * */
-
-    private final Construction building;
+    private final World world;
     private final int maxYears;
-    private final Random random;
+    private final ExecutorService executor;
 
-    public Simulation(Construction building) {
-        this.building = building;
-        this.maxYears = building.getLifeExpect();
-        this.random = new Random();
+    public Simulation(World world, int maxYears) {
+        this.world = world;
+        this.maxYears = maxYears;
+        this.executor = Executors.newFixedThreadPool(4);  // 4 Threads für parallele Ausführung
     }
 
-    /**
-     * Runs the simulation for the specified maxYears or until the building is deconstructed.
-     */
+    //Simulation für die festgelegte Dauer laufen lassen
     public void runSimulation() {
-        System.out.println("Starting simulation for " + maxYears + " years for the " + building.getScenario().getName() + "...");
+        System.out.println("\n=== Starting Simulation for " + maxYears + " Years ===");
 
         for (int year = 1; year <= maxYears; year++) {
-            if (building.isDeconstructed()) {
-                System.out.println("The building has been deconstructed after " + (year - 1) + " years.");
-                break;
-            }
-            building.ageOneYear();
-
-            // Simulate random disasters specific to the building's landscape
-            simulateRandomEvents();
-
-            // Random chance to trigger a renovation
-            if (random.nextInt(100) < 15) {
-                building.renovate();
-            }
-        }
-        if (!building.isDeconstructed()) {
-            System.out.println("\nThe building reached its maximum simulated lifespan of " + maxYears + " years.");
+            System.out.println("\n--- Year " + year + " ---");
+            world.triggerNaturalDisaster();
+            simulateYearlyAging();
         }
 
-        printSimulationResults();
+        //
+        executor.shutdown();
+        System.out.println("\n=== Simulation Completed ===");
     }
 
-    /**
-     * Simulates random disasters based on the building's landscape.
-     */
-    private void simulateRandomEvents() {
-        Landscape landscape = building.getScenario().getLandscape();
-        float[] catastropheFactors = landscape.getCatastropheFactor();
-        String[] disasters = landscape.getDisasters();
+    // Parallele Älterung der Gebäuden
+    private void simulateYearlyAging() {
+        List<Construction> constructions = world.getConstructions();
+        List<Callable<Void>> tasks = new ArrayList<>();
 
-        for (int i = 0; i < disasters.length; i++) {
-            if (random.nextFloat() < catastropheFactors[i]) {
-                System.out.println(landscape.triggerRandomDisaster() + " affects the building.");
-                building.catastrophe();
-                break; // Only one disaster per year per building
-            }
+        for (Construction construction : constructions) {
+            tasks.add(() -> {
+                if (!construction.isDeconstructed()) {
+                    construction.ageOneYear();
+                }
+                return null;
+            });
+        }
+
+        try {
+            executor.invokeAll(tasks);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
-
-    /**
-     * Prints the results of the simulation, including final condition and maintenance costs.
-     */
-    public void printSimulationResults() {
-        building.printStats();
-    }
-
 }
