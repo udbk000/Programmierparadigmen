@@ -2,7 +2,7 @@ import java.util.*;
 import java.util.concurrent.*;
 
 /**
- * Diese Klasse ist eine parallel laufende Welt, die von allen Gebäuden addressiert werden kann. Sie bildet eine Umgebung, in
+ * Diese Klasse ist eine parallel laufende Welt, die von allen Gebäuden adressiert werden kann. Sie bildet eine Umgebung, in
  * der beliebig viele Gebäude existieren. Durch Ereignisse, die in dieser Welt passieren, werden alle Gebäude betroffen.
  */
 
