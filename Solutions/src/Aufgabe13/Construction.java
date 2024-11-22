@@ -1,6 +1,7 @@
+package Aufgabe13;
 
 /**
- * This class contains the methods and algorithms needed for each building. It combines the values of the variables in the class "Szenario" with the algorithms
+ * This class contains the methods and algorithms needed for each building. It combines the values of the variables in the class "Aufgabe13.Szenario" with the algorithms
  * implemented in this class in order to return and print all the necessary numbers, statistics and facts.
  */
 
@@ -20,14 +21,14 @@ public class Construction {
 
     /**
      * BAD:
-     * Dadurch, dass Szenario kein Interface oder Obertyp ist, kommt es zu keinem dynamischen Binden von Szenarien. Könnte man effizienter implementieren.
+     * Dadurch, dass Aufgabe13.Szenario kein Interface oder Obertyp ist, kommt es zu keinem dynamischen Binden von Szenarien. Könnte man effizienter implementieren.
      */
 
     /**
      * BAD:
-     * Diese Klasse ist stark abhängig von Szenario. Dadurch entsteht auch eine Abhängigkeit vom Landscape. Dies sind Abhängigkeiten,
+     * Diese Klasse ist stark abhängig von Aufgabe13.Szenario. Dadurch entsteht auch eine Abhängigkeit vom Landscape. Dies sind Abhängigkeiten,
      * die entstanden sind, aufgrund der Notwendigkeit der Datenbank und dem Ziel, den Code möglichst universell einsetzbar zu machen.
-     * Das Ziel ist, dass Szenario notwendige Spezifikationen liefert.
+     * Das Ziel ist, dass Aufgabe13.Szenario notwendige Spezifikationen liefert.
      */
 
     /**
@@ -245,14 +246,14 @@ public class Construction {
     public void printStats() {
         System.out.println();
         System.out.println("*********");
-        System.out.println("Building Name: " + scenario.getName());
-        System.out.println("Building Material: " + scenario.getMaterial());
-        System.out.println("Building Location: " + scenario.getLandscape());
+        System.out.println("Aufgabe13.Building Name: " + scenario.getName());
+        System.out.println("Aufgabe13.Building Material: " + scenario.getMaterial());
+        System.out.println("Aufgabe13.Building Location: " + scenario.getLandscape());
         System.out.println("Condition: " + condition + "%");
         System.out.println("Life Expectancy: " + lifeExpect + " years");
         System.out.println("Waste production per Year: " + wastePerYear() + " tons");
         System.out.println("CO2 Emission per Year: " + co2PerYear() + " tons");
-        System.out.println("Construction Costs: " + constructionCosts() + " euros");
+        System.out.println("Aufgabe13.Construction Costs: " + constructionCosts() + " euros");
         System.out.println("Maintenance Costs per Year: " + costsPerYear() + " euros");
         System.out.println("*********");
         System.out.println();

@@ -1,7 +1,11 @@
+package Aufgabe13;
+
+import Aufgabe13.Building;
+
 import java.util.List;
 import java.util.ArrayList;
 /**
- * This class implements the interface "Building" as an ecologically sustainable Building. Materials used for the construction
+ * This class implements the interface "Aufgabe13.Building" as an ecologically sustainable Aufgabe13.Building. Materials used for the construction
  * of this building produce less emissions. As a downside, this type of building is rather costly. Approximately half
  * of the used materials in this building are reusable. Inhabitants of this building are more satisfied than those living
  * in a minimalist building. Lifespan and cycles of renovation are similar to minimalistic buildings. This type of buidling
@@ -10,7 +14,7 @@ import java.util.ArrayList;
 public class ecoBuilding implements Building {
 
     /**
-     * Variable co2Emissions defines the amount of CO2 emissions produced by an ecoBuilding in tons.
+     * Variable co2Emissions defines the amount of CO2 emissions produced by an Aufgabe13.ecoBuilding in tons.
      */
     private double co2Emissions;
 

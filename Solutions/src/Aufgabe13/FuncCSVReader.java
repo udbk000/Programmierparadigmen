@@ -1,3 +1,5 @@
+package Aufgabe13;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -11,7 +13,7 @@ import java.util.stream.Collectors;
 
 /**
  * STYLE:
- * Diese Klasse ist funktional implementiert. Sie ersetzt die Klasse "CSVReader" durch eine funktionale Implementierung.
+ * Diese Klasse ist funktional implementiert. Sie ersetzt die Klasse "Aufgabe13.CSVReader" durch eine funktionale Implementierung.
  * Die Implementierung der java.util.function Bibliothek ermöglicht die Implementierung von Functions, wodurch das Paradigma
  * in Java vollständig eingesetzt werden kann. Die Funktion createSzenario illustriert die Verwendung des Paradigmas.
  */

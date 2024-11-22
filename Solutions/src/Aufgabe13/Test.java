@@ -1,11 +1,15 @@
-/**
+package Aufgabe13; /**
  * Aufgabe 3
  * Wer hat was gemacht?
- * Usaid Al-Dabak, 12216291: Kommentare in Construction und Szenario, Welt Klasse implementiert, FuncCSVReader implementiert,
- * Stefan Slanar, 12327076: CSVReader, Landscape
- * Andrii Makarenko 12229205: Simulation, Test,
+ * Usaid Al-Dabak, 12216291: Kommentare in Aufgabe13.Construction und Aufgabe13.Szenario, Welt Klasse implementiert, Aufgabe13.FuncCSVReader implementiert,
+ * Stefan Slanar, 12327076: Aufgabe13.CSVReader, Aufgabe13.Landscape
+ * Andrii Makarenko 12229205: Aufgabe13.Simulation, Aufgabe13.Test,
  */
 
+
+import Aufgabe13.Construction;
+import Aufgabe13.FuncCSVReader;
+import Aufgabe13.Landscape;
 
 import java.util.List;
 
@@ -44,7 +48,7 @@ public class Test {
         }
 
 
-        //Simulation laufen lassen
+        //Aufgabe13.Simulation laufen lassen
         Simulation simulation = new Simulation(world, simulationYears);
         simulation.runSimulation();
     }

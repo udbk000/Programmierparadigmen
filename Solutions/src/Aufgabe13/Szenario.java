@@ -1,6 +1,10 @@
+package Aufgabe13;
+
+import Aufgabe13.Landscape;
+
 /**
  * This class describes a scenario of a building. It contains all the necessary information to run the algorithms implemented in
- * the "Building" class. This class does not provide own methods, as it only depicts a context of a building. Therefore, it is possible
+ * the "Aufgabe13.Building" class. This class does not provide own methods, as it only depicts a context of a building. Therefore, it is possible
  * to implement all kinds of scenarios of a building, only the values of each variable need to be defined. The current implementation
  * makes use of the values of several predefined scenarios given in the database.
  */

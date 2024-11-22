@@ -1,3 +1,5 @@
+package Aufgabe13;
+
 enum Landscape{
     CITY(1.5f, new float[]{0.3f, 0.2f, 0.1f}, "Fire", "Flood", "Earthquake"),
     FOREST(1.2f,new float[]{0.6f, 0.4f}, "Forest Fire", "Flood"),

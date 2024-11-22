@@ -1,3 +1,5 @@
+package Aufgabe13;
+
 public interface Building {
     /** this interface contains methods shared between all types of buildings
      *

@@ -1,12 +1,16 @@
+package Aufgabe13;
+
+import Aufgabe13.Building;
+
 import java.util.List;
 import java.util.ArrayList;
 
 /**
- * This class implements the interface "Building" as a minimalist Building. Materials used for the construction
- * are cheap, leading to low construction costs and less durability. The satisfaction of the inhabitants
- * is generally lower, and the building's lifespan is shorter.
+ * This class implements the interface "Aufgabe13.Building" as a high-quality Aufgabe13.Building. Materials used for the construction
+ * of this building are premium and durable, leading to higher construction costs. However, the satisfaction
+ * of the inhabitants is higher, and the building's lifespan is longer due to better materials and construction techniques.
  */
-public class minBuilding implements Building {
+public class hiQBuilding implements Building {
 
     private double co2Emissions;
     private double waste;
@@ -18,14 +22,14 @@ public class minBuilding implements Building {
     private double condition;
     private boolean isDeconstructed;
 
-    public minBuilding(int inhabitants) {
+    public hiQBuilding(int inhabitants) {
         this.inhabitants = inhabitants;
-        this.cost = 100000 + 1500 * inhabitants; // Lower construction costs due to cheap materials
-        this.waste = 2.0 + 0.5 * inhabitants; // Cheap materials produce more waste
+        this.cost = 300000 + 3500 * inhabitants; // Higher construction costs due to premium materials
+        this.waste = 3.5 + 0.2 * inhabitants; // Premium materials lead to slightly less waste
         this.age = 1;
         this.yearlySatisfaction = new ArrayList<>();
-        this.satisfaction = 45 + (Math.random() * (65 - 45) + 1); // Lower initial satisfaction for minimalist buildings
-        this.co2Emissions = 20 + inhabitants * 1.5; // Less emissions due to lower material quality
+        this.satisfaction = 75 + (Math.random() * (99 - 85) + 1); // Higher initial satisfaction for high-quality buildings
+        this.co2Emissions = 40 + inhabitants * 2.5; // Higher emissions due to premium materials
         this.condition = 100.0;
         this.isDeconstructed = false;
     }
@@ -33,21 +37,21 @@ public class minBuilding implements Building {
     @Override
     public void ageOneYear() {
         if (isDeconstructed) {
-            System.out.println("The minimalist building has been deconstructed.");
+            System.out.println("The high-quality building has been deconstructed.");
         } else {
-            cost += 1500 * inhabitants;
-            waste += 0.5 * inhabitants;
+            cost += 3500 * inhabitants;
+            waste += 0.2 * inhabitants;
             age++;
-            int AGE_EXPECTATION = 50;
+            int AGE_EXPECTATION = 100; // Longer lifespan for high-quality buildings
             if (satisfaction > 0) {
-                satisfaction -= 2.0; // Satisfaction declines faster
+                satisfaction -= 0.5; // Satisfaction declines slower due to better construction
             }
             yearlySatisfaction.add(satisfaction);
-            co2Emissions += inhabitants * 1.5;
-            condition -= 6; // Condition declines faster
-            if (condition < 30) {
+            co2Emissions += inhabitants * 2.5;
+            condition -= 3; // Condition declines slower
+            if (condition < 40) {
                 int x = (int) (Math.random() * 100);
-                if (x % 3 == 0) {
+                if (x % 4 == 0) {
                     this.deconstruct();
                 } else {
                     this.renovate();
@@ -62,12 +66,12 @@ public class minBuilding implements Building {
     @Override
     public boolean deconstruct() {
         if (isDeconstructed) {
-            System.out.println("The minimalist building has already been deconstructed.");
+            System.out.println("The high-quality building has already been deconstructed.");
             return false;
         }
-        System.out.println("Deconstructing the minimalist building...");
-        waste += 8 + 0.6 * inhabitants;
-        co2Emissions += 40 + inhabitants * 2.0;
+        System.out.println("Deconstructing the high-quality building...");
+        waste += 15 + 0.7 * inhabitants;
+        co2Emissions += 70 + inhabitants * 3.5;
         satisfaction = 0;
         condition = 0;
         isDeconstructed = true;
@@ -77,14 +81,14 @@ public class minBuilding implements Building {
     @Override
     public void renovate() {
         if (isDeconstructed) {
-            System.out.println("The minimalist building has been deconstructed and cannot be renovated.");
+            System.out.println("The high-quality building has been deconstructed and cannot be renovated.");
         } else {
-            cost += 8000 + 1000 * inhabitants; // Cheaper renovation costs
-            waste += 1.0 + 0.3 * inhabitants; // More waste during renovations
-            co2Emissions += 10 + inhabitants * 1.2;
-            satisfaction = Math.min(satisfaction + 15, 100);
-            condition = Math.min(condition + 40, 100);
-            System.out.println("Renovating the minimalist building... Satisfaction improved to: " + satisfaction);
+            cost += 15000 + 2000 * inhabitants; // Higher renovation costs
+            waste += 1.5 + 0.1 * inhabitants; // Less waste during renovations
+            co2Emissions += 30 + inhabitants * 1.8;
+            satisfaction = Math.min(satisfaction + 25, 100);
+            condition = Math.min(condition + 60, 100);
+            System.out.println("Renovating the high-quality building... Satisfaction improved to: " + satisfaction);
         }
     }
 
@@ -102,12 +106,12 @@ public class minBuilding implements Building {
     @Override
     public void fire() {
         if (isDeconstructed) {
-            System.out.println("The minimalist building has been deconstructed. No fire can occur.");
+            System.out.println("The high-quality building has been deconstructed. No fire can occur.");
         } else {
-            System.out.println("A fire has broken out in the minimalist building.");
-            cost += 10000 + 1500 * inhabitants;
-            co2Emissions += 100 + 7 * inhabitants;
-            waste += 14 + 0.7 * inhabitants;
+            System.out.println("A fire has broken out in the high-quality building.");
+            cost += 17000 + 2100 * inhabitants;
+            co2Emissions += 51 + 5.2 * inhabitants;
+            waste += 10 + 0.52 * inhabitants;
             satisfaction = Math.max(satisfaction - 30, 0);
             condition = Math.max(condition - 40, 0);
 
@@ -120,12 +124,12 @@ public class minBuilding implements Building {
     @Override
     public void earthquake() {
         if (isDeconstructed) {
-            System.out.println("The minimalist building has been deconstructed. No earthquake can occur.");
+            System.out.println("The high-quality building has been deconstructed. No earthquake can occur.");
         } else {
-            System.out.println("An earthquake has struck the minimalist building.");
-            cost += 17000 + 2500 * inhabitants;
-            co2Emissions += 180 + 12 * inhabitants;
-            waste += 18 + 1 * inhabitants;
+            System.out.println("An earthquake has struck the high-quality building.");
+            cost += 30000 + 3200 * inhabitants;
+            co2Emissions += 100 + 11 * inhabitants;
+            waste += 15 + 1.1 * inhabitants;
             satisfaction = Math.max(satisfaction - 40, 0);
             condition = Math.max(condition - 50, 0);
             if (condition <= 15) {
@@ -138,12 +142,12 @@ public class minBuilding implements Building {
     @Override
     public void flooding() {
         if (isDeconstructed) {
-            System.out.println("The minimalist building has been deconstructed. No flooding can occur.");
+            System.out.println("The high-quality building has been deconstructed. No flooding can occur.");
         } else {
-            System.out.println("The minimalist building has been flooded.");
-            cost += 7000 + 900 * inhabitants;
-            co2Emissions += 34 + 3.5 * inhabitants;
-            waste += 12 + 0.5 * inhabitants;
+            System.out.println("The high-quality building has been flooded.");
+            cost += 11000 + 1600 * inhabitants;
+            co2Emissions += 33 + 3.1 * inhabitants;
+            waste += 8 + 0.39 * inhabitants;
             satisfaction = Math.max(satisfaction - 20, 0);
             condition = Math.max(condition - 30, 0);
             if (condition <= 15) {
@@ -155,9 +159,9 @@ public class minBuilding implements Building {
     @Override
     public void printAvgStats() {
         if (isDeconstructed) {
-            System.out.println("This minimalist building has been deconstructed. No stats available.");
+            System.out.println("This high-quality building has been deconstructed. No stats available.");
         } else {
-            System.out.println("Average stats per inhabitant and year for the minimalist building:");
+            System.out.println("Average stats per inhabitant and year for the high-quality building:");
 
             double avgCostPerInhabitantPerYear = cost / inhabitants /age;
             double avgCO2PerInhabitantPerYear = co2Emissions / inhabitants / age ;
@@ -173,9 +177,9 @@ public class minBuilding implements Building {
     @Override
     public void printCostsByDecade() {
         if(isDeconstructed){
-            System.out.println("This minimalist building has been deconstructed. No stats available.");
+            System.out.println("This high-quality building has been deconstructed. No stats available.");
         } else {
-            System.out.println("Costs per decade for the minimalist building:");
+            System.out.println("Costs per decade for the high-quality building:");
             double totalCostPerDecade;
             int completedDecades = age / 10;
             int currentDecade = (age / 10) + 1;
@@ -196,9 +200,9 @@ public class minBuilding implements Building {
     @Override
     public void printSatisfactionByDecade() {
         if(isDeconstructed){
-            System.out.println("This minimalist building has been deconstructed. No stats available.");
+            System.out.println("This high-quality building has been deconstructed. No stats available.");
         } else {
-            System.out.println("Satisfaction per decade for the minimalist building:");
+            System.out.println("Satisfaction per decade for the high-quality building:");
 
             int completedDecades = age / 10; // Anzahl der abgeschlossenen Jahrzehnte
             int yearsInCurrentDecade = age % 10; // Anzahl der Jahre im laufenden Jahrzehnt
@@ -230,4 +234,3 @@ public class minBuilding implements Building {
         return totalSatisfaction / numberOfYears; // Durchschnitt berechnen
     }
 }
-

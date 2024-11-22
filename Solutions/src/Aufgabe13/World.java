@@ -1,3 +1,7 @@
+package Aufgabe13;
+
+import Aufgabe13.Construction;
+
 import java.util.*;
 import java.util.concurrent.*;
 
@@ -30,7 +34,7 @@ public class World {
         constructions.add(construction);
     }
 
-    // Simulation der Welt starten
+    // Aufgabe13.Simulation der Welt starten
     public void simulate() {
         List<Callable<Void>> tasks = new ArrayList<>();
 

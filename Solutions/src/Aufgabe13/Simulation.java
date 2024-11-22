@@ -1,3 +1,7 @@
+package Aufgabe13;
+
+import Aufgabe13.Construction;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.*;
@@ -13,9 +17,9 @@ public class Simulation {
         this.executor = Executors.newFixedThreadPool(4);  // 4 Threads für parallele Ausführung
     }
 
-    //Simulation für die festgelegte Dauer laufen lassen
+    //Aufgabe13.Simulation für die festgelegte Dauer laufen lassen
     public void runSimulation() {
-        System.out.println("\n=== Starting Simulation for " + maxYears + " Years ===");
+        System.out.println("\n=== Starting Aufgabe13.Simulation for " + maxYears + " Years ===");
 
         for (int year = 1; year <= maxYears; year++) {
             System.out.println("\n--- Year " + year + " ---");
@@ -25,7 +29,7 @@ public class Simulation {
 
         //
         executor.shutdown();
-        System.out.println("\n=== Simulation Completed ===");
+        System.out.println("\n=== Aufgabe13.Simulation Completed ===");
     }
 
     // Parallele Älterung der Gebäuden
