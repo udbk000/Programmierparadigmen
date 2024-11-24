@@ -10,7 +10,7 @@ public interface Entity {
     /**
      * Fügt eine gebaute Einheit zu dieser Entity hinzu.
      *
-     * @param entity Die zu fügende gebaute Einheit.
+     * @param entity Die hinzuzufügende gebaute Einheit.
      */
     public void addEntity(Entity entity);
 
