@@ -5,12 +5,8 @@ package Aufgabe4;
  * Usaid Al-Dabak, 12216291: Modell der Untertypbeziehungen erarbeitet und durchdacht, Implementierung des Typs Entity und alle Untertypen von Entity
  * Andrii Makarenko 12229205: Test Klasse
  * */
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-import java.util.List;
-import java.util.ArrayList;
 
-class Test {
+class TestAufgabe4 {
 
     public static void main(String[] args) {
         // Test Building
