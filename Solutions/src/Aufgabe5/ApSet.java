@@ -1,5 +1,5 @@
 package Aufgabe5;
-//TODO: Klasse fertigstellen
+//TODO: Klasse fertigstellen (MyList wird entsprechend bearbeitet werden müssen)
 public class ApSet<X extends Approvable<P, T>, P, T> implements ApprovableSet<X, P, T> {
     private MyList<X> list; // Deine verkettete Liste als Membervariable
 
@@ -19,6 +19,7 @@ public class ApSet<X extends Approvable<P, T>, P, T> implements ApprovableSet<X,
     @Override
     public boolean addCriterion(P criterion) {
         if (!containsCriterion(criterion)) {
+            //TODO:
             // Criterion-Logik kann je nach Bedarf angepasst werden
             // Wenn deine Liste dies unterstützt, kann das Kriterium als Objekt gespeichert werden.
             // Zum Beispiel könntest du eine Liste für Kriterien separat verwalten.
@@ -29,17 +30,17 @@ public class ApSet<X extends Approvable<P, T>, P, T> implements ApprovableSet<X,
     }
 
     @Override
-    public Iterator<X> iteratorAll() {
+    public MyIterator<X> iteratorAll() {
         return list.iterator(); // Benutze den Iterator deiner Liste
     }
 
     @Override
-    public Iterator<X> iterator(P criterion) {
+    public MyIterator<X> iterator(P criterion) {
         return list.iterator(criterion); // Benutze den Iterator der Liste mit Kriterium
     }
 
     @Override
-    public Iterator<X> iteratorNot(P criterion) {
+    public MyIterator<X> iteratorNot(P criterion) {
         return list.iteratorNot(criterion); // Benutze den Iterator der Liste mit Kriterium
     }
 
@@ -49,7 +50,8 @@ public class ApSet<X extends Approvable<P, T>, P, T> implements ApprovableSet<X,
     }
 
     @Override
-    public Iterator<P> criterions() {
+    public MyIterator<P> criterions() {
+        //TODO:
         // Du kannst einen speziellen Iterator für Kriterien einführen
         // Wenn du die Kriterien in einer separaten Liste verwalten möchtest
         return list.iterator(); // Beispiel, je nach Logik anpassen
@@ -62,6 +64,7 @@ public class ApSet<X extends Approvable<P, T>, P, T> implements ApprovableSet<X,
 
     @Override
     public boolean containsCriterion(P criterion) {
+        //TODO:
         // Kriterium suchen (kann von deiner Liste abhängen)
         return false; // Placeholder
     }

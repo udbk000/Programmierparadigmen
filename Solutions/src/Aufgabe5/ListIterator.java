@@ -1,6 +1,6 @@
 package Aufgabe5;
 
-public class ListIterator<T> {
+public class ListIterator<T> implements MyIterator {
     private Node<T> current;
     private Node<T> previous;
     private MyList<T> list;
@@ -36,7 +36,7 @@ public class ListIterator<T> {
         // Die Methode removeNode() in der Liste wird aufgerufen, um das Element zu entfernen
         list.removeNode(previous);
 
-        // Setze den current-Knoten auf den nächsten, damit der Iterator weiterhin funktioniert
+        // Setze den current-Knoten auf den nächsten
         current = previous.next;
         canRemove = false;  // Nach der Entfernung kann nicht sofort ein weiteres Element entfernt werden
     }
