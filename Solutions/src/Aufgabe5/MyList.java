@@ -1,7 +1,9 @@
 package Aufgabe5;
 
-public class MyList<T> {
-    private Node<T> head;
+import java.util.NoSuchElementException;
+
+public class MyList<X extends Approvable<?,?>> implements Iterable {
+    private Node<X> head;
     private int size;
 
     public MyList() {
@@ -9,17 +11,11 @@ public class MyList<T> {
         size = 0;
     }
 
-    public void add(T item) {
-        Node<T> newNode = new Node<>(item);
-        if (head == null) {
-            head = newNode;
-        } else {
-            Node<T> current = head;
-            while (current.next != null) {
-                current = current.next;
-            }
-            current.next = newNode;
-        }
+
+    public void add(X item) {
+        Node<X> toAdd = new Node(item);
+        head.add(toAdd);
+        head= toAdd;
         size++;
     }
 
@@ -27,33 +23,46 @@ public class MyList<T> {
         return size;
     }
 
-    // Methode zum Entfernen eines Knotens
-    public void removeNode(Node<T> nodeToRemove) {
-        if (head == null) return;
-
-        // Wenn der Knoten der Kopf der Liste ist
-        if (head == nodeToRemove) {
-            head = head.next;
-            size--;
-            return;
-        }
-
-        // Durch die Liste iterieren, um den Knoten zu finden
-        Node<T> current = head;
-        while (current != null && current.next != nodeToRemove) {
-            current = current.next;
-        }
-
-        if (current != null) {
-            current.next = current.next.next;  // Entferne den Knoten
-            size--;
-        }
+    public void remove(Node toRemove){
+        toRemove.remove();
     }
 
     // Iterator zurückgeben
-    public ListIterator<T> iterator() {
-        return new ListIterator<>(head, this);
+    @Override
+    public MyIterator<X> iterator() {
+        return new MyIterator<X>() {
+            private Node<X> current = head;
+            private boolean removable = false;
+
+            @Override
+            public boolean hasNext() {
+                return current != null;
+            }
+
+            @Override
+            public X next() {
+                if (!hasNext()) {
+                    throw new NoSuchElementException();
+                }
+                X data = current.getData();
+                current = current.getNext();
+                removable = true;
+
+                return data;
+            }
+
+            public boolean isRemovable(){
+                return removable;
+            }
+            @Override
+            public void remove() {
+                current.remove();
+                size--;
+            }
+        };
     }
 
 }
+
+
 
