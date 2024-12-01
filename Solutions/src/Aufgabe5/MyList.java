@@ -9,18 +9,6 @@ public class MyList<T> {
         size = 0;
     }
 
-    // Konstruktor, der neue MyList aus bestehenden Elementen erzeugt
-    public MyList(MyList<T> elements) {
-        MyList<T> newList = new MyList<>();
-        Node<T> headOfElements = elements.head;
-        ListIterator<T> it = new ListIterator<>(headOfElements, elements);
-        Node<T> node = headOfElements;
-        while (it.hasNext()) {
-            newList.add(node);
-            node = node.getNext();
-        }
-    }
-
     public void add(T item) {
         Node<T> newNode = new Node<>(item);
         if (head == null) {
