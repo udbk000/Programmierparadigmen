@@ -14,14 +14,11 @@ public class Node<X extends Approvable<?, ?>> {
     public void add(Node toAdd){
         next = toAdd;
         toAdd.previous = this;
-
     }
 
     public void remove(){
         previous.next = this.next;
         next.previous = this.previous;
-
-
     }
 
     public X getData() {

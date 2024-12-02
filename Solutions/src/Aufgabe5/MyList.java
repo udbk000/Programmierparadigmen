@@ -1,6 +1,6 @@
 package Aufgabe5;
 
-public class MyList<T> {
+public class MyList<T extends Approvable<P, T>, P> {
     private Node<T> head;
     private int size;
 
@@ -15,10 +15,10 @@ public class MyList<T> {
             head = newNode;
         } else {
             Node<T> current = head;
-            while (current.next != null) {
-                current = current.next;
+            while (current.getNext() != null) {
+                current = current.getNext();
             }
-            current.next = newNode;
+            current.setNext(newNode);
         }
         size++;
     }
@@ -33,26 +33,26 @@ public class MyList<T> {
 
         // Wenn der Knoten der Kopf der Liste ist
         if (head == nodeToRemove) {
-            head = head.next;
+            head = head.getNext();
             size--;
             return;
         }
 
         // Durch die Liste iterieren, um den Knoten zu finden
         Node<T> current = head;
-        while (current != null && current.next != nodeToRemove) {
-            current = current.next;
+        while (current != null && current.getNext() != nodeToRemove) {
+            current = current.getNext();
         }
 
         if (current != null) {
-            current.next = current.next.next;  // Entferne den Knoten
+            current.setNext(current.getNext().getNext());  // Entferne den Knoten
             size--;
         }
     }
 
     // Iterator zurückgeben
-    public ListIterator<T> iterator() {
-        return new ListIterator<>(head, this);
+    public MyListIterator<T> iterator() {
+        return new MyListIterator<>(head, this.head.getData());
     }
 
 }

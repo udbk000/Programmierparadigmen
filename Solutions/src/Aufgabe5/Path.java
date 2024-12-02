@@ -1,5 +1,6 @@
 package Aufgabe5;
 
+import java.util.Iterator;
 import java.util.Objects;
 
 public class Path<X> implements Admin<X, Path<X>>, Iterable<X> {
@@ -21,5 +22,14 @@ public class Path<X> implements Admin<X, Path<X>>, Iterable<X> {
             return new Path<>(this.elements);
         }
         return this;
+    }
+
+    public Path<X> remove(X x) {
+        return this;
+    }
+
+    @Override
+    public Iterator<X> iterator() {
+        return null;
     }
 }

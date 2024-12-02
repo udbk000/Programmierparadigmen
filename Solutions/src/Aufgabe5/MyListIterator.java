@@ -1,7 +1,7 @@
 package Aufgabe5;
 
 
-public class MyListIterator<T> implements MyIterator<T> {
+public class MyListIterator<T extends Approvable<?, ?>> implements MyIterator<T> {
     private Node<T> current;
     private boolean filter;
     private T criterion;
