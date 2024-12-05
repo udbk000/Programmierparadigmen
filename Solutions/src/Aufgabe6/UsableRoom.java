@@ -5,6 +5,6 @@ import java.io.Serializable;
 public class UsableRoom implements Room {
     @Override
     public void call(){
-        System.out.println("UsableRoom called");
+        System.out.println("Usable room was called");
     }
 }
