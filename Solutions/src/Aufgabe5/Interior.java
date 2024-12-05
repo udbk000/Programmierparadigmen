@@ -1,6 +1,6 @@
 package Aufgabe5;
 
-public class Interior<P> extends Space<P> {
+/*public class Interior<P> extends Space<P> {
     private final double area;
 
     public Interior(String description, double area) {
@@ -16,4 +16,4 @@ public class Interior<P> extends Space<P> {
     public String toString() {
         return super.toString() + " (Area: " + area + " m²)";
     }
-}
+}*/

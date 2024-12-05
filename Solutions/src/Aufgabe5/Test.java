@@ -9,7 +9,7 @@ package Aufgabe5;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Test {
+/*public class Test {
     public static void main(String[] args) {
         // Schritt 1: Erstellen von Objekten der geforderten Typen
         ApSet<Counter<String>, Counter<String>, String> apSet1 = new ApSet<>();
@@ -125,4 +125,4 @@ public class Test {
             container.add(item);
         }
     }
-}
+}*/

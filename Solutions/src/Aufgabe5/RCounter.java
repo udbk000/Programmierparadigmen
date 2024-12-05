@@ -1,6 +1,6 @@
 package Aufgabe5;
 
-public class RCounter implements Approvable<RCounter, Path<RCounter>> {
+/*public class RCounter implements Approvable<RCounter, Path<RCounter>> {
     private int count = 0;
     private Path<RCounter> approvedPath;
 
@@ -26,4 +26,4 @@ public class RCounter implements Approvable<RCounter, Path<RCounter>> {
     public String toString() {
         return "RCounter Count: " + count;
     }
-}
+}*/
