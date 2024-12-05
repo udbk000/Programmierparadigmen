@@ -3,7 +3,7 @@ package Aufgabe5;
 import java.util.Iterator;
 import java.util.Objects;
 
-public class Path<X> implements Admin<X, Path<X>>, Iterable<X> {
+/*public class Path<X> implements Admin<X, Path<X>>, Iterable<X> {
 
     private final MyList<X> elements;
 
@@ -32,4 +32,4 @@ public class Path<X> implements Admin<X, Path<X>>, Iterable<X> {
     public Iterator<X> iterator() {
         return null;
     }
-}
+}*/

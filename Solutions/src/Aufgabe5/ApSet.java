@@ -1,6 +1,6 @@
 package Aufgabe5;
 
-public class ApSet<X extends Approvable<P, T>, P extends Approvable<?, P>, T> implements ApprovableSet<X, P, T> {
+/*public class ApSet<X extends Approvable<P, T>, P extends Approvable<?, P>, T> implements ApprovableSet<X, P, T> {
     private MyList<X, ?> elements;  // Liste für die Elemente
     private MyList<P, ?> criterions;  // Liste für die Kriterien
 
@@ -95,4 +95,4 @@ public class ApSet<X extends Approvable<P, T>, P extends Approvable<?, P>, T> im
     public MyIterator<P> criterions() {
         return criterions.iterator();  // Gibt die Liste der Kriterien zurück
     }
-}
+}*/

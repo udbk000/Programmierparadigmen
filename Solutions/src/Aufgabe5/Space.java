@@ -1,6 +1,6 @@
 package Aufgabe5;
 
-public class Space<P> implements Approvable<P, Path<Space<P>>> {
+/*public class Space<P> implements Approvable<P, Path<Space<P>>> {
     private final String description;
     private Path<Space<P>> approvedPath;
 
@@ -23,4 +23,4 @@ public class Space<P> implements Approvable<P, Path<Space<P>>> {
     public String toString() {
         return description;
     }
-}
+}*/

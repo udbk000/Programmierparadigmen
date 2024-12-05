@@ -3,7 +3,7 @@ package Aufgabe5;
 
 import java.util.Iterator;
 
-public abstract class AdminSet<X extends Approvable<P, T>, P, T extends Admin<X, T>> implements ApprovableSet<X, P, T> {
+/*public abstract class AdminSet<X extends Approvable<P, T>, P, T extends Admin<X, T>> implements ApprovableSet<X, P, T> {
 
     private MyList<X, P, T> list;
 
@@ -48,7 +48,7 @@ public abstract class AdminSet<X extends Approvable<P, T>, P, T extends Admin<X,
     public MyIterator<P> iterator() {
         // Kriteriums-Iterator, der alle Kriterien zurückgibt
         return new MyIterator<P>() {
-            private Iterator<P> criterionIterator = /* Ihr Iterator über die Kriterien */;
+            private Iterator<P> criterionIterator = /* Ihr Iterator über die Kriterien;
 
             @Override
             public boolean hasNext() {
@@ -127,5 +127,5 @@ public abstract class AdminSet<X extends Approvable<P, T>, P, T extends Admin<X,
         }
     }
 
-}
+}*/
 
