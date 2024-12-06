@@ -27,15 +27,15 @@ public interface Room {
     float getWidth();
 
     /**
-     * Usable Rooms get designated names. This method makes it possible to find out a room's name.
+     * Usable Rooms get designated names. This method makes it possible to find out a usable room's name.
      * @return a String which represents the name of the usable room, null else
      */
     String getName();
 
     /**
-     * Given a usable room with windows, a call of this method returns the surface area of all windows combined inside of this room.
+     * Given a usable room with windows, a call of this method returns the surface area of all windows combined inside this usable room.
      * The unit is m^2.
-     * @return a floating point number >=0 if the Room is a WindowRoom, -1 else
+     * @return a floating point number >=0 if the Room is usable, -1 else
      */
     float getWindowArea();
 
