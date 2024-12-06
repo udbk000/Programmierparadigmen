@@ -10,7 +10,7 @@ public class WindowRoom implements UsableRoom{
     private String name;
     private float windowArea;
 
-
+//TODO: purpose wie definieren? variable oder objekt
 
     @Override
     public float area() {

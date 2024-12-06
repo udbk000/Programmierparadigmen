@@ -2,9 +2,9 @@ package Aufgabe6;
 
 /**
  * This interface describes a room in an office with its functionality. Rooms can be subdivided into several types of Rooms, which will
- * be defined by subtypes of this interface. A room has several different purposes. One aspect that is applicable to each and
+ * be defined by subtypes of this interface. Rooms can have different purposes. One aspect that is applicable to each and
  * every room is its area. Rooms that implement this interface are always viewed as either rectangular or square-shaped in order
- * to keep the simulation simple and easily understandable. Check all method description in order to understand how method calls behave in different
+ * to keep the simulation simple and easily understandable. Check all method descriptions in order to understand how method calls behave in different
  * subtypes of this interface.
  */
 public interface Room {
@@ -47,7 +47,7 @@ public interface Room {
 
     /**
      * Given a usable room, this method will change the room's designated purpose. Usable rooms can either be used as a bureau or as storage rooms.
-     * Therefore, this method acts a switch between these two purposes. If the method is called in a room that is not a usable room, the method will not do anything.
+     * Therefore, this method acts as a switch between these two purposes. If the method is called in a room that is not a usable room, the method will not do anything.
      */
     void changePurpose();
 
