@@ -54,21 +54,35 @@ public class WindowRoom extends UsableRoom{
        windowArea = (length*width) * (float) Math.random() + 0.1f; // generate a positive window surface area
     }
 
+    /**
+     * This method calculates the surface area of this entire WindowRoom.
+     * @return a floating point number >=0, the surface area of this room in m^2.
+     */
     @Override
     public float area() {
         return length*width;
     }
 
+    /**
+     * @return the length of this WindowRoom in m, >= 0
+     */
     @Override
     public float getLength() {
         return length;
     }
 
+    /**
+     * @return the width of this WindowRoom in m, >=0
+     */
     @Override
     public float getWidth() {
         return width;
     }
 
+    /**
+     * This method is called in order to get the unique and identifying name of this WindowRoom.
+     * @return a String containing the unique name of this WindowRoom
+     */
     @Override
     public String getName() {
         return roomName;
@@ -83,16 +97,28 @@ public class WindowRoom extends UsableRoom{
         return ret;
     }
 
+    /**
+     * This method returns the window surface area of this WindowRoom in m^2.
+     * @return the window surface area, float number > 0.
+     */
     @Override
     public float getWindowArea() {
         return windowArea;
     }
 
+    /**
+     * This method always returns -1, as the luminous flux is not calculated for WindowRooms.
+     * @return -1
+     */
     @Override
     public int getLumen() {
         return -1;
     }
 
+    /**
+     * Given a UsableRoom, this method will change the room's designated purpose. Usable rooms can either be used as a bureau or as storage rooms.
+     * Therefore, this method acts as a switch between these two purposes. The first call of this method sets the purpose to bureau.
+     */
     @Override
     public void changePurpose() {
         if(purpose == 0){
@@ -108,6 +134,11 @@ public class WindowRoom extends UsableRoom{
 
     }
 
+    /**
+     * Given a usable room with its purpose being a bureau, this method will return an int which represents the amount of
+     * different workplaces inside this room. A call of this method in a usable room that does not serve as a bureau will always return 0.
+     * @return an integer >=0 counting the amount of distinct workplaces
+     */
     @Override
     public int getWorkplace() {
         if(purpose == 1){
@@ -116,6 +147,11 @@ public class WindowRoom extends UsableRoom{
         else return 0;
     }
 
+    /**
+     * Given a usable room with its purpose being a storage room, this method will return the volume of this room in m^3.
+     * A call of this method in a usable room that does not serve as a storage unit will always return 0.
+     * @return a floating point number >=0 representing the max volume available for storage purposes in this room
+     */
     @Override
     public float getStorage() {
         if(purpose == 2){

@@ -48,7 +48,8 @@ public interface Room {
 
     /**
      * Given a usable room, this method will change the room's designated purpose. Usable rooms can either be used as a bureau or as storage rooms.
-     * Therefore, this method acts as a switch between these two purposes. If the method is called in a room that is not a usable room, the method will not do anything.
+     * Therefore, this method acts as a switch between these two purposes. The first call of this method sets the purpose to bureau.
+     * If the method is called in a room that is not a usable room, the method will not do anything.
      */
     void changePurpose();
 
