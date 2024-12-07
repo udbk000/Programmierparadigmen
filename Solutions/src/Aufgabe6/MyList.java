@@ -47,15 +47,15 @@ public class MyList <X> {
     }
 
 
-    X find(X data){
+    boolean find(X data){
         Node<X> temp = head;
         while(temp != null){
             if(temp.data.equals(data)){
-                return temp.data;
+                return true;
             }
             temp = temp.next;
         }
-        return null;
+        return false;
     }
 
 
