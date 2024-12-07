@@ -1,6 +1,6 @@
 package Aufgabe6;
 
-public class MyList <X> {
+public class MyList <X extends Room, OfficeInt, BuildingInt> {
     Node<X> head;
 
     MyList(X data){
