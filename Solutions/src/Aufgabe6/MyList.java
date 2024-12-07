@@ -28,6 +28,37 @@ public class MyList <X> {
         throw new IndexOutOfBoundsException("Index " + index + " is out of bounds");
     }
 
+    void remove(X data){
+        if (head == null) {
+            return;
+        }
+        if (head.data.equals(data)) {
+            head = head.next;
+            return;
+        }
+        Node<X> temp = head;
+        while (temp.next != null) {
+            if (temp.next.data.equals(data)) {
+                temp.next = temp.next.next;
+                return;
+            }
+            temp = temp.next;
+        }
+    }
+
+
+    X find(X data){
+        Node<X> temp = head;
+        while(temp != null){
+            if(temp.data.equals(data)){
+                return temp.data;
+            }
+            temp = temp.next;
+        }
+        return null;
+    }
+
+
     void add(X data){
         if(head == null){
             head = new Node<X>(data);
