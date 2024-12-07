@@ -6,7 +6,7 @@ package Aufgabe6;
  */
 public class Test {
     public static void main(String[] args) {
-        MyList<Room> list = new MyList<Room>();
+        MyList<Room, Room, Room> list = new MyList<Room, Room, Room>();
         WindowRoom r = new WindowRoom(11,1);
         System.out.println(r.getName());
 

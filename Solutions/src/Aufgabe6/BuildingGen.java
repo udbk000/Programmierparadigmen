@@ -5,9 +5,12 @@ package Aufgabe6;
  * @param <X> subtypes of OfficeInt
  */
 public class BuildingGen<X extends OfficeInt> implements BuildingInt {
+
+    MyList<?, ?, ?> officeList = new MyList<>();
+
     @Override
     public void addOffice(OfficeInt toAdd) {
-
+        officeList.add(toAdd);
     }
 
     @Override

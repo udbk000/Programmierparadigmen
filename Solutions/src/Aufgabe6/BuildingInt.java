@@ -9,7 +9,7 @@ public interface BuildingInt {
      * This method adds an office to this building. If this office is part of the building already, nothing happens.
      * @param toAdd an instance of OfficeInt being not null.
      */
-    void addOffice(Room toAdd);
+    void addOffice(OfficeInt toAdd);
 
     /**
      * This method removes an office which is currently part of the building. The office should be part of the building, otherwise nothing happens.

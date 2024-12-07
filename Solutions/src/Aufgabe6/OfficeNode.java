@@ -1,10 +1,10 @@
 package Aufgabe6;
 
 public class OfficeNode {
-    private Office val;
+    private OfficeInt val;
     private OfficeNode next;
 
-    public OfficeNode(Office val) {
+    public OfficeNode(OfficeInt val) {
         this.val = val;
         this.next = null;
     }
@@ -17,7 +17,7 @@ public class OfficeNode {
         return this.next;
     }
 
-    public Office getVal() {
+    public OfficeInt getVal() {
         return this.val;
     }
 }

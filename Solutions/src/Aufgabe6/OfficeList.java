@@ -3,7 +3,7 @@ package Aufgabe6;
 public class OfficeList {
     private OfficeNode head;
 
-    public OfficeList(Office head) {
+    public OfficeList(OfficeInt head) {
         this.head = new OfficeNode(head);
     }
 
@@ -22,27 +22,27 @@ public class OfficeList {
     }
 
     // this method appends a OfficeNode with val = office to the head node
-    public void addLast(Office office) {
+    public void addLast(OfficeInt office) {
         OfficeNode lastNode = this.getLast();
         lastNode.setNext(new OfficeNode(office));
     }
 
     // this method prepends a OfficeNode with val = office to the head node
-    public void addFirst(Office office) {
+    public void addFirst(OfficeInt office) {
         OfficeNode newNode = new OfficeNode(office);
         newNode.setNext(this.head);
         this.head = newNode;
     }
 
     // this method removes the head node and returns its office object
-    public Office pollFirst() {
+    public OfficeInt pollFirst() {
         OfficeNode temp = this.head;
         this.head = this.head.getNext();
         return temp.getVal();
     }
 
     // this method removes the last node of the list and returs its office object
-    public Office pollLast() {
+    public OfficeInt pollLast() {
         OfficeNode last = this.getLast();
         OfficeNode temp = this.head;
         while (temp.getNext() != last) {
