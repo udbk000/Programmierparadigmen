@@ -1,6 +1,6 @@
 package Aufgabe6;
 
-public class LightRoom implements UsableRoom{
+public class LightRoom extends UsableRoom {
     @Override
     public float area() {
         return 0;
