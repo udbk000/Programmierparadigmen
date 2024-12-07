@@ -14,64 +14,109 @@ public class Office implements OfficeInt {
      */
     private static int officeNum = 0;
 
+    Office() {
+        officeNum++;
+    }
 
     @Override
     public int getOfficeNumber() {
-        return 0;
+        return officeNum;
     }
 
     @Override
     public float getSideRoomsArea() {
-        return 0;
+        return sideRooms.getArea();
     }
 
     @Override
     public float getEntireArea() {
-        return 0;
+        return sideRooms.getArea() + windowRooms.getArea() + lightRooms.getArea();
     }
 
     @Override
     public void addRoom(Room toAdd) {
-
+        if(toAdd instanceof SideRoom) {
+            sideRooms.addLast(toAdd);
+        }
+        else if (toAdd instanceof WindowRoom) {
+            windowRooms.addLast(toAdd);
+        }
+        else if (toAdd instanceof LightRoom) {
+            lightRooms.addLast(toAdd);
+        }
+        else {
+            throw new IllegalArgumentException("Illegal room type");
+        }
     }
 
     @Override
     public void removeRoom(Room toRemove) {
-
+        if(toRemove instanceof SideRoom) {
+            sideRooms.remove(toRemove);
+        }
+        else if (toRemove instanceof WindowRoom) {
+            windowRooms.remove(toRemove);
+        }
+        else if (toRemove instanceof LightRoom) {
+            lightRooms.remove(toRemove);
+        }
+        else {
+            throw new IllegalArgumentException("Illegal room type");
+        }
     }
 
     @Override
     public float getAvgAreaUsableRooms() {
-        return 0;
+        int usableRoomsCount = windowRooms.getCount() + lightRooms.getCount();
+        float usableRoomsArea = windowRooms.getArea() + lightRooms.getArea();
+        if(usableRoomsCount == 0)
+            return 0;
+        return usableRoomsArea/usableRoomsCount;
     }
 
     @Override
     public float getAvgAreaWindowRooms() {
-        return 0;
+        int windowRoomCount = windowRooms.getCount();
+        float windowRoomArea = windowRooms.getArea();
+        if(windowRoomCount == 0)
+            return 0;
+        return windowRoomArea/windowRoomCount;
     }
 
     @Override
     public float getAvgAreaLightRooms() {
-        return 0;
+        int lightRoomCount = lightRooms.getCount();
+        float lightRoomArea = lightRooms.getArea();
+        if(lightRoomCount == 0)
+            return 0;
+        return lightRoomArea/lightRoomCount;
     }
 
     @Override
     public float getAvgAreaStorage() {
-        return 0;
+        int storageCount = sideRooms.getCount();
+        if(storageCount == 0)
+            return 0;
+        float storageArea = sideRooms.getStorageSum();
+        return storageArea/storageCount;
     }
 
     @Override
     public int getAvgWorkspace() {
-        return 0;
+        int workspaceCount = windowRooms.getCount() + lightRooms.getCount();
+        if(workspaceCount == 0)
+            return 0;
+        int workspaceArea = windowRooms.getWorkplaceSum();
+        return workspaceArea/workspaceCount;
     }
 
     @Override
     public float getAvgRelationWindowToArea() {
-        return 0;
+        return windowRooms.getWindowToArea();
     }
 
     @Override
     public float getAvgRelationLightToArea() {
-        return 0;
+        return lightRooms.getLightToArea();
     }
 }

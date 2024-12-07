@@ -52,6 +52,80 @@ public class RoomList {
         return last.getVal();
     }
 
+    float getArea(){
+        if(head == null){
+            return 0;
+        }
+        float area = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            area += temp.getVal().area();
+            temp = temp.getNext();
+        }
+        return area;
+    }
+
+    int getCount(){
+        if(head == null){
+            return 0;
+        }
+        int count = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            count++;
+            temp = temp.getNext();
+        }
+        return count;
+    }
+
+    int getWorkplaceSum(){
+        if(head == null)
+            return 0;
+        int sum = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            sum += temp.getVal().getWorkplace();
+            temp = temp.getNext();
+        }
+        return sum;
+    }
+
+    float getStorageSum(){
+        if(head == null)
+            return 0;
+        float sum = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            sum += temp.getVal().getStorage();
+            temp = temp.getNext();
+        }
+        return sum;
+    }
+
+    float getWindowToArea(){
+        if(head == null || !(head.getVal() instanceof WindowRoom))
+            return 0;
+        float sum = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            sum += temp.getVal().getWindowArea() / temp.getVal().area();
+            temp = temp.getNext();
+        }
+        return sum/getCount();
+    }
+
+    float getLightToArea(){
+        if(head == null || !(head.getVal() instanceof LightRoom))
+            return 0;
+        float sum = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            sum += temp.getVal().getLumen() / temp.getVal().area();
+            temp = temp.getNext();
+        }
+        return sum/getCount();
+    }
+
     // this method can be used to output the list for testing purposes
     // incomplete
     @Override
