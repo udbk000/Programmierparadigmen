@@ -42,7 +42,7 @@ public class WindowRoom extends UsableRoom{
     private int purpose;
 
     /**
-     * This constructor intializes a new instance of WindowRoom. The window surface area is randomly generated
+     * This constructor initializes a new instance of WindowRoom. The window surface area is randomly generated
      * using the surface area of the room itself. The room's name is generated internally.
      * @param l >= 0; the length of this room
      * @param w >= 0; the width of this room
