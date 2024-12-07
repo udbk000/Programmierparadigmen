@@ -1,12 +1,14 @@
 package Aufgabe6;
 
 /**
- * A non-generic implementation of OfficeInt. Methods behave as described in OfficeInt.
+ * This class is a generic implementation of the OfficeInt interface. Methods behave as described in OfficeInt.
+ * @param <X> a subtype of Room
  */
-public class Office implements OfficeInt {
-    RoomList sideRooms;
-    RoomList windowRooms;
-    RoomList lightRooms;
+public class OfficeGen<X extends Room> implements OfficeInt{
+    /**
+     * This list contains all rooms inside this office.
+     */
+    MyList<X> RoomList = new MyList<>();
 
     /**
      * This variable is unique for each and every office, identifying every office. This variable can only grow, therefore it is always >= 0.
