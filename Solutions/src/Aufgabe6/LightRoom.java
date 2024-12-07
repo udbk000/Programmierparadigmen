@@ -20,8 +20,9 @@ public class LightRoom implements UsableRoom {
 
     /**
      * This variable stores the luminous flux in Lumen (lm) of this room. This variable is always positive.
+     * Not changeable.
      */
-    private int lumFlux;
+    private final int lumFlux;
 
     /**
      * This String stores the LightRoom's unique name. The name is generated in the constructor and is not changeable.
@@ -44,7 +45,12 @@ public class LightRoom implements UsableRoom {
      */
     private int purpose;
 
-
+    /**
+     * The constructor initializes an instance of LightRoom. The length and width of the room must be set by the client.
+     * The name of the room is generated internally. The luminous flux of this room is randomly generated internally.
+     * @param l the length of this room in m, >=0
+     * @param w the width of this room in m, >= 0
+     */
     public LightRoom(float l, float w){
         length = l;
         width = w;
@@ -52,41 +58,71 @@ public class LightRoom implements UsableRoom {
         roomName = getUniqueLightRoomName();
     }
 
+    /**
+     * Helper method to generate unique name of this room. Can only be called once.
+     * @return unique room name for this LightRoom.
+     */
     private synchronized String getUniqueLightRoomName(){
         String ret = "LightRoom-" + (++roomID);
         return ret;
     }
 
+    /**
+     * This method returns the surface area of this LightRoom in m^2.
+     * @return the surface area of this LightRoom in m^2, >= 0
+     */
     @Override
     public float area() {
         return width*length;
     }
 
+    /**
+     * @return the length of this room in m, >= 0
+     */
     @Override
     public float getLength() {
         return length;
     }
 
+    /**
+     * @return the width of this room in m, >= 0
+     */
     @Override
     public float getWidth() {
         return width;
     }
 
+    /**
+     * This method returns the unique and identifying name of this LightRoom.
+     * @return a unique and identifying name of this LightRoom
+     */
     @Override
     public String getName() {
         return roomName;
     }
 
+    /**
+     * As LightRooms do not have windows, this method always returns 0. The surface area of all windows in this windowless room has to be 0 m^2.
+     * @return 0
+     */
     @Override
     public float getWindowArea() {
         return 0;
     }
 
+    /**
+     * This method returns the luminous flux of this LightRoom in Lumen (lm). The returned value is always positive.
+     * @return luminous flux of this room in Lumen, >0
+     */
     @Override
     public int getLumen() {
         return lumFlux;
     }
 
+    /**
+     * Given a UsableRoom, this method will change the room's designated purpose. Usable rooms can either be used as a bureau or as storage rooms.
+     * Therefore, this method acts as a switch between these two purposes. The first call of this method sets the purpose to bureau.
+     */
     @Override
     public void changePurpose() {
         if(purpose == 0){
@@ -102,6 +138,11 @@ public class LightRoom implements UsableRoom {
 
     }
 
+    /**
+     * Given a usable room with its purpose being a bureau, this method will return an int which represents the amount of
+     * different workplaces inside this room. A call of this method in a usable room that does not serve as a bureau will always return 0.
+     * @return an integer >=0 counting the amount of distinct workplaces
+     */
     @Override
     public int getWorkplace() {
         if (purpose == 1) {
@@ -109,6 +150,11 @@ public class LightRoom implements UsableRoom {
         } else return 0;
     }
 
+    /**
+     * Given a usable room with its purpose being a storage room, this method will return the volume of this room in m^3.
+     * A call of this method in a usable room that does not serve as a storage unit will always return 0.
+     * @return a floating point number >=0 representing the max volume available for storage purposes in this room
+     */
     @Override
     public float getStorage() {
         if(purpose == 2){
