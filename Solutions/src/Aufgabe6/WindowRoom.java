@@ -4,24 +4,27 @@ package Aufgabe6;
  * This class implements the interface UsableRoom. WindowRooms are usable rooms which have windows. WindowRooms can be used either as a bureau or as a storage.
  * Look into interface UsableRoom or Room for further information.
  */
-public class WindowRoom extends UsableRoom{
+public class WindowRoom implements UsableRoom{
     /**
      * Variable length is used to store the length of the room in m. Can only be positive or zero.
+     * Not changeable.
      */
-    private float length;
+    private final float length;
 
     /**
      * Variable width is used to store the width of the room in m. Can only be positive or zero.
+     * Not changeable.
      */
-    private float width;
+    private final float width;
 
     /**
      * This floating point number stores the room's window surface area. It can only be positive.
+     * It is not changeable.
      */
-    private float windowArea;
+    private final float windowArea;
 
     /**
-     * This String stores the WindowRoom's unique name. The name is generated in the constructor and not changeable.
+     * This String stores the WindowRoom's unique name. The name is generated in the constructor and is not changeable.
      */
     private final String roomName;
 
@@ -36,7 +39,7 @@ public class WindowRoom extends UsableRoom{
      * This integer is the internal definition of the room's purpose. As only two possible purposes exist, 1 is used to
      * imply that the room is being used as a bureau, 2 is used to indicate the usage as storage. As the default value
      * is 0, this value signalizes that the room has not yet been dedicated to a specific purpose.
-     * Purpose once it has been modified can only accept the values 1 or 2. If the value has not been set, the default value
+     * Purpose, once it has been modified, can only accept the values 1 or 2. If the value has not been set, the default value
      * is 0 signifying no purpose.
      */
     private int purpose;
