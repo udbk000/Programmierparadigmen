@@ -1,8 +1,8 @@
 package Aufgabe5;
 
-/*public class ApSet<X extends Approvable<P, T>, P extends Approvable<?, P>, T> implements ApprovableSet<X, P, T> {
-    private MyList<X, ?> elements;  // Liste für die Elemente
-    private MyList<P, ?> criterions;  // Liste für die Kriterien
+public class ApSet<X extends Approvable<P, T>, P, T> implements ApprovableSet<X, P, T> {
+    private MyList<X> elements;  // Liste für die Elemente
+    private MyList<P> criterions;  // Liste für die Kriterien
 
     public ApSet() {
         elements = new MyList<>();
@@ -48,7 +48,7 @@ package Aufgabe5;
 
             @Override
             public void remove() {
-                elements.removeNode(current);  // Entferne das aktuelle Element aus der Liste
+                elements.remove(current);  // Entferne das aktuelle Element aus der Liste
             }
         };
     }
@@ -77,7 +77,7 @@ package Aufgabe5;
 
             @Override
             public void remove() {
-                elements.removeNode(current);  // Entferne das aktuelle Element aus der Liste
+                elements.remove(current);  // Entferne das aktuelle Element aus der Liste
             }
         };
     }
@@ -87,6 +87,7 @@ package Aufgabe5;
         return null;
     }
 
+    @Override
     public MyIterator<P> iteratorCriteria() {
         return criterions.iterator();  // Iterator über die Kriterien
     }
@@ -95,4 +96,4 @@ package Aufgabe5;
     public MyIterator<P> criterions() {
         return criterions.iterator();  // Gibt die Liste der Kriterien zurück
     }
-}*/
+}
