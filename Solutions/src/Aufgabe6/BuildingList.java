@@ -3,7 +3,7 @@ package Aufgabe6;
 public class BuildingList {
     private BuildingNode head;
 
-    public BuildingList(Building head) {
+    public BuildingList(BuildingInt head) {
         this.head = new BuildingNode(head);
     }
 
@@ -22,27 +22,27 @@ public class BuildingList {
     }
 
     // this method appends a BuildingNode with val = building to the head node
-    public void addLast(Building building) {
+    public void addLast(BuildingInt building) {
         BuildingNode lastNode = this.getLast();
         lastNode.setNext(new BuildingNode(building));
     }
 
     // this method prepends a BuildingNode with val = building to the head node
-    public void addFirst(Building building) {
+    public void addFirst(BuildingInt building) {
         BuildingNode newNode = new BuildingNode(building);
         newNode.setNext(this.head);
         this.head = newNode;
     }
 
     // this method removes the head node and returns its building object
-    public Building pollFirst() {
+    public BuildingInt pollFirst() {
         BuildingNode temp = this.head;
         this.head = this.head.getNext();
         return temp.getVal();
     }
 
     // this method removes the last node of the list and returs its building object
-    public Building pollLast() {
+    public BuildingInt pollLast() {
         BuildingNode last = this.getLast();
         BuildingNode temp = this.head;
         while (temp.getNext() != last) {

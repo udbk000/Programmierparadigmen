@@ -1,10 +1,10 @@
 package Aufgabe6;
 
 public class BuildingNode {
-    private Building val;
+    private BuildingInt val;
     private BuildingNode next;
 
-    public BuildingNode(Building val) {
+    public BuildingNode(BuildingInt val) {
         this.val = val;
         this.next = null;
     }
@@ -17,7 +17,7 @@ public class BuildingNode {
         return this.next;
     }
 
-    public Building getVal() {
+    public BuildingInt getVal() {
         return this.val;
     }
 }
