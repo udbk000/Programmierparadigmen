@@ -1,6 +1,6 @@
 package Aufgabe6;
 
-public class RoomList {
+public class RoomList implements IterableList<Room> {
     private RoomNode head;
 
     public RoomList(Room head) {
@@ -163,6 +163,25 @@ public class RoomList {
             current = current.getNext();
         }
         return true;
+    }
+
+    public LinkedListIterator<Room> iterator() {
+        return new LinkedListIterator<>(convertToGenericNodes());
+    }
+
+    private LinkedListIterator.Node<Room> convertToGenericNodes() {
+        if (head == null) return null;
+        LinkedListIterator.Node<Room> genericHead = new LinkedListIterator.Node<>(head.getVal());
+        LinkedListIterator.Node<Room> currentGeneric = genericHead;
+        RoomNode current = head.getNext();
+
+        while (current != null) {
+            currentGeneric.next = new LinkedListIterator.Node<>(current.getVal());
+            currentGeneric = currentGeneric.next;
+            current = current.getNext();
+        }
+
+        return genericHead;
     }
 
     // this method can be used to output the list for testing purposes

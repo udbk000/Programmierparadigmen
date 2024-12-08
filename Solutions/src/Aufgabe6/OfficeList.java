@@ -91,6 +91,25 @@ public class OfficeList {
         return true;
     }
 
+    public LinkedListIterator<OfficeInt> iterator() {
+        return new LinkedListIterator<>(convertToGenericNodes());
+    }
+
+    private LinkedListIterator.Node<OfficeInt> convertToGenericNodes() {
+        if (head == null) return null;
+        LinkedListIterator.Node<OfficeInt> genericHead = new LinkedListIterator.Node<>(head.getVal());
+        LinkedListIterator.Node<OfficeInt> currentGeneric = genericHead;
+        OfficeNode current = head.getNext();
+
+        while (current != null) {
+            currentGeneric.next = new LinkedListIterator.Node<>(current.getVal());
+            currentGeneric = currentGeneric.next;
+            current = current.getNext();
+        }
+
+        return genericHead;
+    }
+
     // this method can be used to output the list for testing purposes
     // incomplete
     @Override

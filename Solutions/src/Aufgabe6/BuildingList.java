@@ -91,6 +91,25 @@ public class BuildingList {
         return true;
     }
 
+    public LinkedListIterator<BuildingInt> iterator() {
+        return new LinkedListIterator<>(convertToGenericNodes());
+    }
+
+    private LinkedListIterator.Node<BuildingInt> convertToGenericNodes() {
+        if (head == null) return null;
+        LinkedListIterator.Node<BuildingInt> genericHead = new LinkedListIterator.Node<>(head.getVal());
+        LinkedListIterator.Node<BuildingInt> currentGeneric = genericHead;
+        BuildingNode current = head.getNext();
+
+        while (current != null) {
+            currentGeneric.next = new LinkedListIterator.Node<>(current.getVal());
+            currentGeneric = currentGeneric.next;
+            current = current.getNext();
+        }
+
+        return genericHead;
+    }
+
     // this method can be used to output the list for testing purposes
     // incomplete
     @Override
