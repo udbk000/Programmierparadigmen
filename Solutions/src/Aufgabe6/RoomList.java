@@ -23,15 +23,19 @@ public class RoomList {
 
     // this method appends a RoomNode with val = room to the head node
     public void addLast(Room room) {
-        RoomNode lastNode = this.getLast();
-        lastNode.setNext(new RoomNode(room));
+        if (this.head != null) {
+            RoomNode lastNode = this.getLast();
+            lastNode.setNext(new RoomNode(room));
+        }
     }
 
     // this method prepends a RoomNode with val = room to the head node
     public void addFirst(Room room) {
-        RoomNode newNode = new RoomNode(room);
-        newNode.setNext(this.head);
-        this.head = newNode;
+        if (this.head != null) {
+            RoomNode newNode = new RoomNode(room);
+            newNode.setNext(this.head);
+            this.head = newNode;
+        }
     }
 
     // this method removes the head node and returns its room object
@@ -124,6 +128,41 @@ public class RoomList {
             temp = temp.getNext();
         }
         return sum/getCount();
+    }
+
+    // this method removes the node which was passed to the function as a parameter
+    public void remove(Room toRemove) {
+        if (this.head != null) {
+            if (this.head.getNext() != null) {
+                RoomNode current = this.head;
+                while (current.getVal() != toRemove) {
+                    current = current.getNext();
+                }
+                RoomNode current2 = this.head;
+                while (current2.getNext().getVal() != toRemove) {
+                    current2 = current2.getNext();
+                }
+                current2.setNext(current.getNext());
+                current.setNext(null);
+            } else {
+                if (toRemove == this.head.getVal()) {
+                    this.head = null;
+                }
+            }
+        }
+    }
+
+    // this method return true if the given Room is in a Node in the list or flase if not
+    public boolean contains(Room node) {
+        RoomNode current = this.head;
+        RoomNode last = this.getLast();
+        while (current.getVal() != node) {
+            if (current == last && current.getVal() != node) {
+                return false;
+            }
+            current = current.getNext();
+        }
+        return true;
     }
 
     // this method can be used to output the list for testing purposes

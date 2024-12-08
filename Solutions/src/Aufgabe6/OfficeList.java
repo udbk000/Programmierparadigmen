@@ -23,15 +23,19 @@ public class OfficeList {
 
     // this method appends a OfficeNode with val = office to the head node
     public void addLast(OfficeInt office) {
-        OfficeNode lastNode = this.getLast();
-        lastNode.setNext(new OfficeNode(office));
+        if (this.head != null) {
+            OfficeNode lastNode = this.getLast();
+            lastNode.setNext(new OfficeNode(office));
+        }
     }
 
     // this method prepends a OfficeNode with val = office to the head node
     public void addFirst(OfficeInt office) {
-        OfficeNode newNode = new OfficeNode(office);
-        newNode.setNext(this.head);
-        this.head = newNode;
+        if (this.head != null) {
+            OfficeNode newNode = new OfficeNode(office);
+            newNode.setNext(this.head);
+            this.head = newNode;
+        }
     }
 
     // this method removes the head node and returns its office object
@@ -50,6 +54,41 @@ public class OfficeList {
         }
         temp.setNext(null);
         return last.getVal();
+    }
+
+    // this method removes the node which was passed to the function as a parameter
+    public void remove(Office toRemove) {
+        if (this.head != null) {
+            if (this.head.getNext() != null) {
+                OfficeNode current = this.head;
+                while (current.getVal() != toRemove) {
+                    current = current.getNext();
+                }
+                OfficeNode current2 = this.head;
+                while (current2.getNext().getVal() != toRemove) {
+                    current2 = current2.getNext();
+                }
+                current2.setNext(current.getNext());
+                current.setNext(null);
+            } else {
+                if (toRemove == this.head.getVal()) {
+                    this.head = null;
+                }
+            }
+        }
+    }
+
+    // this method return true if the given Office is in a Node in the list or flase if not
+    public boolean contains(Office node) {
+        OfficeNode current = this.head;
+        OfficeNode last = this.getLast();
+        while (current.getVal() != node) {
+            if (current == last && current.getVal() != node) {
+                return false;
+            }
+            current = current.getNext();
+        }
+        return true;
     }
 
     // this method can be used to output the list for testing purposes
