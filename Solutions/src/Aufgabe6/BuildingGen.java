@@ -6,11 +6,11 @@ package Aufgabe6;
  */
 public class BuildingGen<X extends OfficeInt> implements BuildingInt {
 
-    MyList<?, ?, ?> officeList = new MyList<>();
+    OfficeList officeList = new OfficeList(null);
 
     @Override
     public void addOffice(OfficeInt toAdd) {
-        officeList.add(toAdd);
+        officeList.addLast(toAdd);
     }
 
     @Override

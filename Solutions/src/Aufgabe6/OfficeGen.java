@@ -8,7 +8,7 @@ public class OfficeGen<X extends Room> implements OfficeInt{
     /**
      * This list contains all rooms inside this office.
      */
-    MyList<X, X, X> RoomList = new MyList<>();
+    RoomList roomList = new RoomList(null);
 
     /**
      * This method returns a unique integer identifying this Office.
@@ -32,13 +32,13 @@ public class OfficeGen<X extends Room> implements OfficeInt{
 
     @Override
     public void addRoom(Room toAdd) {
-        RoomList.add((X) toAdd);
+        roomList.addLast(toAdd);
 
     }
 
     @Override
     public void removeRoom(Room toRemove) {
-        RoomList.remove((X) toRemove);
+        roomList.remove(toRemove);
 
     }
 
