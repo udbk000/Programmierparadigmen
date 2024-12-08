@@ -57,7 +57,7 @@ public class BuildingList {
     }
 
     // this method removes the node which was passed to the function as a parameter
-    public void remove(Building toRemove) {
+    public void remove(BuildingInt toRemove) {
         if (this.head != null) {
             if (this.head.getNext() != null) {
                 BuildingNode current = this.head;
@@ -79,7 +79,7 @@ public class BuildingList {
     }
 
     // this method return true if the given Building is in a Node in the list or flase if not
-    public boolean contains(Building node) {
+    public boolean contains(BuildingInt node) {
         BuildingNode current = this.head;
         BuildingNode last = this.getLast();
         while (current.getVal() != node) {

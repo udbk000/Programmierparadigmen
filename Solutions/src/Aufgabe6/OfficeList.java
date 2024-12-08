@@ -57,7 +57,7 @@ public class OfficeList {
     }
 
     // this method removes the node which was passed to the function as a parameter
-    public void remove(Office toRemove) {
+    public void remove(OfficeInt toRemove) {
         if (this.head != null) {
             if (this.head.getNext() != null) {
                 OfficeNode current = this.head;
@@ -79,7 +79,7 @@ public class OfficeList {
     }
 
     // this method return true if the given Office is in a Node in the list or flase if not
-    public boolean contains(Office node) {
+    public boolean contains(OfficeInt node) {
         OfficeNode current = this.head;
         OfficeNode last = this.getLast();
         while (current.getVal() != node) {

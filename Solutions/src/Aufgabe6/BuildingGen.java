@@ -15,7 +15,7 @@ public class BuildingGen<X extends OfficeInt> implements BuildingInt {
 
     @Override
     public void removeOffice(OfficeInt toRemove) {
-
+        officeList.remove(toRemove);
     }
 
     @Override
