@@ -20,9 +20,6 @@ public class BuildingGen<X extends OfficeInt> implements BuildingInt {
 
     @Override
     public void printOfficeInfo() {
-        while(officeList.getNext() != null){
-            System.out.println();
-        }
-
+        System.out.println(officeList.toString());
     }
 }

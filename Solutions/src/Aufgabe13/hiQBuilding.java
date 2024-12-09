@@ -10,8 +10,10 @@ import java.util.ArrayList;
  * of this building are premium and durable, leading to higher construction costs. However, the satisfaction
  * of the inhabitants is higher, and the building's lifespan is longer due to better materials and construction techniques.
  */
-public class hiQBuilding implements Building {
-
+public class hiQBuilding implements Building { //GOOD: implementiert eine große menge an funktionalität
+    //GOOD: realistische Simulation
+    //BAD: alles in einer klasse, verletzung des Single Responsibility Principle
+    //BAD: redundanz bei fire, earthquake, flooding - teilen viel funktionalität
     private double co2Emissions;
     private double waste;
     private double cost;
@@ -127,7 +129,7 @@ public class hiQBuilding implements Building {
             System.out.println("The high-quality building has been deconstructed. No earthquake can occur.");
         } else {
             System.out.println("An earthquake has struck the high-quality building.");
-            cost += 30000 + 3200 * inhabitants;
+            cost += 30000 + 3200 * inhabitants; //BAD: viel rechnung mit hardcoded werten
             co2Emissions += 100 + 11 * inhabitants;
             waste += 15 + 1.1 * inhabitants;
             satisfaction = Math.max(satisfaction - 40, 0);
@@ -157,7 +159,7 @@ public class hiQBuilding implements Building {
     }
 
     @Override
-    public void printAvgStats() {
+    public void printAvgStats() { //GOOD: statistische und analytische Features
         if (isDeconstructed) {
             System.out.println("This high-quality building has been deconstructed. No stats available.");
         } else {

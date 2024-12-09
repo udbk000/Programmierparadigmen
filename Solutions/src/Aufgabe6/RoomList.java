@@ -69,6 +69,88 @@ public class RoomList implements IterableList<Room> {
         return area;
     }
 
+    float getAvgSideArea(){
+        int count = 0;
+        float area = 0;
+        if(head == null){
+            return 0;
+        }
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            if(temp.getVal() instanceof SideRoom){
+                count++;
+                area += temp.getVal().area();
+                temp = temp.getNext();
+            }
+        }
+        return area/count;
+    }
+
+    float getEntireArea(){
+        if(head == null){
+            return 0;
+        }
+        float area = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            area += temp.getVal().area();
+            temp = temp.getNext();
+        }
+        return area;
+    }
+
+    float getAvgUsableArea(){
+        if (head == null){
+            return 0;
+        }
+        float area = 0;
+        int count = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            if (temp.getVal() instanceof UsableRoom){
+                count++;
+                area += temp.getVal().area();
+                temp = temp.getNext();
+            }
+        }
+        return area/count;
+    }
+
+    float getAvgWindowroomArea(){
+        if (head == null){
+            return 0;
+        }
+        float area = 0;
+        int count = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            if (temp.getVal() instanceof WindowRoom){
+                count++;
+                area += temp.getVal().area();
+                temp = temp.getNext();
+            }
+        }
+        return area/count;
+    }
+
+    float getAvgLightroomArea(){
+        if (head == null){
+            return 0;
+        }
+        float area = 0;
+        int count = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            if (temp.getVal() instanceof LightRoom){
+                count++;
+                area += temp.getVal().area();
+                temp = temp.getNext();
+
+            }
+        }
+        return area/count;
+    }
+
     int getCount(){
         if(head == null){
             return 0;
@@ -94,6 +176,22 @@ public class RoomList implements IterableList<Room> {
         return sum;
     }
 
+    int getAvgWorklpaceArea(){
+        int area = getWorkplaceSum();
+        if (head == null || area == 0){
+            return 0;
+        }
+        int count = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            if (temp.getVal().getWorkplace() != 0)
+                count++;
+            temp = temp.getNext();
+        }
+        return area/count;
+    }
+
+
     float getStorageSum(){
         if(head == null)
             return 0;
@@ -104,6 +202,21 @@ public class RoomList implements IterableList<Room> {
             temp = temp.getNext();
         }
         return sum;
+    }
+
+    float getAvgStorageArea(){
+        float area = getStorageSum();
+        if (head == null || area == 0){
+            return 0;
+        }
+        int count = 0;
+        RoomNode temp = this.head;
+        while(temp.getNext() != null){
+            if (temp.getVal().getStorage() != 0)
+                count++;
+            temp = temp.getNext();
+        }
+        return area/count;
     }
 
     float getWindowToArea(){
