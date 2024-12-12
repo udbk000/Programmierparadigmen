@@ -21,7 +21,7 @@ public class SideRoom implements Room {
 
     /**
      * This method calculates the area of this SideRoom.
-     * @return the area of this SideRoom in m2. Can only be positive or zero.
+     * @return the area of this SideRoom in m^2. Can only be positive or zero.
      */
     @Override
     public float area() {
