@@ -23,9 +23,9 @@ public class FuncCSVReader {
         List<Szenario> scenarios = new ArrayList<>();
         String line;
         String csvSplitBy = ",";
-        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-            br.readLine();
-            while ((line = br.readLine()) != null) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) { //BAD: duplizierte Logik für createSzenario
+            br.readLine();                                                       //BAD: keine Exception handling
+            while ((line = br.readLine()) != null) {                             //BAD: manuelles Hinzufügen zu scenarios
                 String[] fields = line.split(csvSplitBy);
 
                 String name = fields[0];
@@ -46,8 +46,8 @@ public class FuncCSVReader {
     }
 
     // Funktion, die eine Szene von der CSV-Zeile erstellt
-    Function<String, Szenario> createSzenario = line -> {
-        String[] fields = line.split(",");
+    Function<String, Szenario> createSzenario = line -> {//GOOD: klare funktionalität
+        String[] fields = line.split(",");         //GOOD: verwendung eines funktionalen Paradigmas
         String name = fields[0];
         float co2Emission = Float.parseFloat(fields[1]);
         String material = fields[2];

@@ -57,7 +57,7 @@ public class OfficeList {
     }
 
     // this method removes the node which was passed to the function as a parameter
-    public void remove(Office toRemove) {
+    public void remove(OfficeInt toRemove) {
         if (this.head != null) {
             if (this.head.getNext() != null) {
                 OfficeNode current = this.head;
@@ -79,7 +79,7 @@ public class OfficeList {
     }
 
     // this method return true if the given Office is in a Node in the list or flase if not
-    public boolean contains(Office node) {
+    public boolean contains(OfficeInt node) {
         OfficeNode current = this.head;
         OfficeNode last = this.getLast();
         while (current.getVal() != node) {
@@ -89,6 +89,25 @@ public class OfficeList {
             current = current.getNext();
         }
         return true;
+    }
+
+    public LinkedListIterator<OfficeInt> iterator() {
+        return new LinkedListIterator<>(convertToGenericNodes());
+    }
+
+    private LinkedListIterator.Node<OfficeInt> convertToGenericNodes() {
+        if (head == null) return null;
+        LinkedListIterator.Node<OfficeInt> genericHead = new LinkedListIterator.Node<>(head.getVal());
+        LinkedListIterator.Node<OfficeInt> currentGeneric = genericHead;
+        OfficeNode current = head.getNext();
+
+        while (current != null) {
+            currentGeneric.next = new LinkedListIterator.Node<>(current.getVal());
+            currentGeneric = currentGeneric.next;
+            current = current.getNext();
+        }
+
+        return genericHead;
     }
 
     // this method can be used to output the list for testing purposes

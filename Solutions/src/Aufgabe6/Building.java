@@ -17,11 +17,10 @@ public class Building implements BuildingInt{
     @Override
     public void removeOffice(OfficeInt toRemove) {
         officeList.remove(toRemove);
-
     }
 
     @Override
     public void printOfficeInfo() {
-
+        System.out.println(officeList.toString());
     }
 }

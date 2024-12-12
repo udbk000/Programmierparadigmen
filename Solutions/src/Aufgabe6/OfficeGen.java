@@ -8,7 +8,7 @@ public class OfficeGen<X extends Room> implements OfficeInt{
     /**
      * This list contains all rooms inside this office.
      */
-    MyList<X, X, X> RoomList = new MyList<>();
+    RoomList roomList = new RoomList(null);
 
     /**
      * This method returns a unique integer identifying this Office.
@@ -22,58 +22,57 @@ public class OfficeGen<X extends Room> implements OfficeInt{
 
     @Override
     public float getSideRoomsArea() {
-        return 0;
+        return roomList.getAvgSideArea();
     }
 
     @Override
     public float getEntireArea() {
-        return 0;
+        return roomList.getEntireArea();
     }
 
     @Override
     public void addRoom(Room toAdd) {
-        RoomList.add((X) toAdd);
+        roomList.addLast(toAdd);
 
     }
 
     @Override
     public void removeRoom(Room toRemove) {
-        RoomList.remove((X) toRemove);
-
+        roomList.remove(toRemove);
     }
 
     @Override
     public float getAvgAreaUsableRooms() {
-        return 0;
+        return roomList.getAvgUsableArea();
     }
 
     @Override
     public float getAvgAreaWindowRooms() {
-        return 0;
+        return roomList.getAvgWindowroomArea();
     }
 
     @Override
     public float getAvgAreaLightRooms() {
-        return 0;
+        return roomList.getAvgLightroomArea();
     }
 
     @Override
     public float getAvgAreaStorage() {
-        return 0;
+        return roomList.getAvgStorageArea();
     }
 
     @Override
     public int getAvgWorkspace() {
-        return 0;
+        return roomList.getAvgWorklpaceArea();
     }
 
     @Override
     public float getAvgRelationWindowToArea() {
-        return 0;
+        return roomList.getWindowToArea();
     }
 
     @Override
     public float getAvgRelationLightToArea() {
-        return 0;
+        return roomList.getLightToArea();
     }
 }
