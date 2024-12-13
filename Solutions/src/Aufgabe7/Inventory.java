@@ -65,6 +65,7 @@ public class Inventory {
     public void showHeatPumps(){
         System.out.println("--- Information about all heat pumps ---");
         System.out.println("1 - low performance, 2 - medium performance, 3 - high performance");
+        System.out.println();
         System.out.println("1. Information about available heat pumps that are in the inventory:");
         int counter = 0;
         for (HeatPump pump: heatPumps) {
@@ -73,6 +74,7 @@ public class Inventory {
                 System.out.println("Available heat pump No." + counter + ": ");
                 System.out.println("Price " + pump.price() + "€");
                 System.out.println("Performance level: " + pump.performance());
+                System.out.println();
             }
 
 
@@ -87,6 +89,7 @@ public class Inventory {
                 System.out.println("Price " + pump.price() + "€");
                 System.out.println("Performance level: " + pump.performance());
                 System.out.println("Heat pump is installed in: " + pump.installedIn());
+                System.out.println();
             }
 
         }
