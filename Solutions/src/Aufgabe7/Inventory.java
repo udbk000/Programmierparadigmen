@@ -19,7 +19,7 @@ public class Inventory {
         int officeSize = toOffice.getSize();
         String type = toOffice.getHeatingType();
         for (HeatPump p : heatPumps) {
-            if(p.performance() == toOffice.getSize()){
+            if(p.performance() == officeSize){
                 if(p.type().equals(type)){
                     toOffice.receive(p);
                     return p;
@@ -28,7 +28,7 @@ public class Inventory {
             }
         }
         for (HeatPump p : heatPumps) {
-            if(p.performance() +1 == toOffice.getSize()){
+            if(p.performance() +1 == officeSize){
                 if(p.type().equals(type)) {
                     toOffice.receive(p);
                     return p;
