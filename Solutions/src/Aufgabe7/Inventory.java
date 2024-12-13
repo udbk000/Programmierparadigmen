@@ -30,16 +30,17 @@ public class Inventory {
         }
         for (HeatPump p : heatPumps) {
             if(p.performance() +1 == toOffice.getSize()){
-                if(p.type().equals(type)){
+                if(p.type().equals(type)) {
                     toOffice.receive(p);
                     return p;
+                }
             }
         }
         System.out.println("Cannot assign heat pump to this office because there is no suiting heat pump in the inventory");
         return null;
     }
 
-    public void returnHeatPump(HeatPump toReturn, Office fromOffice){
+    public void returnHeatPump(HeatPump toReturn, Office fromOffice) {
         toReturn.setAvailability(0);
         fromOffice.setPumpState(0);
     }
