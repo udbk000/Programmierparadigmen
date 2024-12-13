@@ -13,6 +13,7 @@ public class OfficeManager {
     public void showOffices(){
         System.out.println("--- Information about all offices ---");
         System.out.println("1 - small office, 2 - medium large office, 3 - large office");
+        System.out.println();
         for (Office o : offices) {
             System.out.println("Office name: " + o.getName());
             System.out.println("Office size: " + o.getSize());
