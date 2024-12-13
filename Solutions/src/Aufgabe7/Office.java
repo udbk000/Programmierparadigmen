@@ -18,7 +18,7 @@ public interface Office {
      * 0 - keine Pumpe
      * 1 - dieses Büro hat eine Pumpe
      *
-     * die Methode receive() erhält eine pumpe, die diesem büro zugewiesen wird. Nach dem aufruf von receive() soll
-     * die oben genannte variable entsprechend auf 1 gesetzt werden.
+     * die Methode receive() erhält eine pumpe, die diesem büro zugewiesen wird. Das Büro soll dann diese Pumpe speichern
+     * Nach dem aufruf von receive() soll die oben genannte variable entsprechend auf 1 gesetzt werden.
      */
 }
