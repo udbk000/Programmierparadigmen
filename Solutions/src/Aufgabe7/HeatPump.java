@@ -9,12 +9,16 @@ public interface HeatPump {
      * 1 - low performance pump
      * 2 - medium performance pump
      * 3 - high performance pump
+     *
+     * die Methode performance() soll diesen int zurückgeben
      */
 
     /**
      * Eine integer variable soll die Verfügbarkeit der Pumpe speichern!
      * 0 = Pumpe ist keinem Büro zugewiesen
      * 1 = Pumpe ist bereits einem Büro zugewiesen
+     *
+     * die Methode state() soll diesen Int zurückgeben
      */
 
 }
