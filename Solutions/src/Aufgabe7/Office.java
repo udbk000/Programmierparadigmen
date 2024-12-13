@@ -6,6 +6,7 @@ package Aufgabe7;
 public interface Office {
     /**
      * Büros sollen eindeutige Namen haben. Die Methode HeatPump.assignedIn() gibt dann diesen Namen als String zurück.
+     * Die Methode getName() gibt den Namen zurück.
      */
 
     /**
@@ -27,7 +28,11 @@ public interface Office {
      * 0 - keine Pumpe
      * 1 - dieses Büro hat eine Pumpe
      *
+     * die Methode getPumpPerformance() gibt den Performance Level der Pumpe zurück (1/2/3), wenn eine Pumpe installiert ist.
+     * Wenn keine Pumpe installiert ist, gibt sie 0 zurück.
+     *
      * die Methode receive() erhält eine pumpe, die diesem büro zugewiesen wird. Das Büro soll dann diese Pumpe speichern
      * Nach dem aufruf von receive() soll die oben genannte variable entsprechend auf 1 gesetzt werden.
+     * Methode hasPump() gibt diesen int zurück.
      */
 }
