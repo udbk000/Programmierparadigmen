@@ -14,7 +14,7 @@ public interface HeatPump {
      */
 
     /**
-     * Eine integer variable soll die Verfügbarkeit der Pumpe speichern!
+     * Eine integer variable availability soll die Verfügbarkeit der Pumpe speichern!
      * 0 = Pumpe ist keinem Büro zugewiesen
      * 1 = Pumpe ist bereits einem Büro zugewiesen
      *
