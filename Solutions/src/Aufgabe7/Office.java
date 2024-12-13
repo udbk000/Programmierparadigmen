@@ -5,6 +5,9 @@ package Aufgabe7;
  */
 public interface Office {
     /**
+     * Büros sollen eindeutige Namen haben. Die Methode HeatPump.assignedIn() gibt dann diesen Namen als String zurück.
+     */
+    /**
      * Größe des Büros soll als int variable gespeichert werden!
      * 1 - kleines Büro
      * 2 - mittelgroßes Büro
