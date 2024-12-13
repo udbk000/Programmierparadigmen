@@ -22,6 +22,8 @@ public class Inventory {
             if(p.performance() == officeSize){
                 if(p.type().equals(type)){
                     toOffice.receive(p);
+                    p.setAvailability(1);
+                    toOffice.setPumpState(1);
                     return p;
                 }
 
@@ -31,6 +33,8 @@ public class Inventory {
             if(p.performance() +1 == officeSize){
                 if(p.type().equals(type)) {
                     toOffice.receive(p);
+                    p.setAvailability(1);
+                    toOffice.setPumpState(1);
                     return p;
                 }
             }
