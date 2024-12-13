@@ -72,7 +72,7 @@ public class Inventory {
             if(pump.state() == 0){
                 counter++;
                 System.out.println("Available heat pump No." + counter + ": ");
-                System.out.println("Price " + pump.price() + "€");
+                System.out.println("Price: " + pump.price() + "€");
                 System.out.println("Performance level: " + pump.performance());
                 System.out.println();
             }
@@ -86,7 +86,7 @@ public class Inventory {
             if(pump.state() == 1){
                 counter++;
                 System.out.println("Assigned heat pump No." + counter + ": ");
-                System.out.println("Price " + pump.price() + "€");
+                System.out.println("Price: " + pump.price() + "€");
                 System.out.println("Performance level: " + pump.performance());
                 System.out.println("Heat pump is installed in: " + pump.installedIn());
                 System.out.println();
