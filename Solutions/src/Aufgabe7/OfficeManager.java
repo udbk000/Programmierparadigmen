@@ -13,7 +13,7 @@ public class OfficeManager {
     public void showOffices(){
         System.out.println("--- Information about all offices ---");
         for (Office o : offices) {
-            System.out.println("Office name: " + o.getName);
+            System.out.println("Office name: " + o.getName());
             if(o.hasPump() == 0){
                 System.out.println("This office has no heat pump installed. ");
             } else if(o.hasPump()==1){
