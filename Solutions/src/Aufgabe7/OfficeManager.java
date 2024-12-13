@@ -17,8 +17,8 @@ public class OfficeManager {
             if(o.hasPump() == 0){
                 System.out.println("This office has no heat pump installed. ");
             } else if(o.hasPump()==1){
-                System.out.println("This office has this type of heating: " o.getHeatingType());
-                System.out.println("The pump in this office has the following performance level: " o.getPumpPerformance());
+                System.out.println("This office has this type of heating: " + o.getHeatingType());
+                System.out.println("The pump in this office has the following performance level: " + o.getPumpPerformance());
                 System.out.println();
             }
         }
