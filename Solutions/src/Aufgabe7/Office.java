@@ -29,6 +29,7 @@ public interface Office {
      * 1 - dieses Büro hat eine Pumpe
      *
      * die Methode getPumpPerformance() gibt den Performance Level der Pumpe zurück (1/2/3), wenn eine Pumpe installiert ist.
+     * (ruft die methode pump.performance() auf und retourniert ebendiesen Wert.)
      * Wenn keine Pumpe installiert ist, gibt sie 0 zurück.
      *
      * die Methode receive() erhält eine pumpe, die diesem büro zugewiesen wird. Das Büro soll dann diese Pumpe speichern
