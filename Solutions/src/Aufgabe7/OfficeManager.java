@@ -12,8 +12,10 @@ public class OfficeManager {
 
     public void showOffices(){
         System.out.println("--- Information about all offices ---");
+        System.out.println("1 - small office, 2 - medium large office, 3 - large office");
         for (Office o : offices) {
             System.out.println("Office name: " + o.getName());
+            System.out.println("Office size: " + o.getSize());
             if(o.hasPump() == 0){
                 System.out.println("This office has no heat pump installed. ");
             } else if(o.hasPump()==1){
