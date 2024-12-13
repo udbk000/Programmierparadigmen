@@ -18,16 +18,21 @@ public class Inventory {
     public HeatPump assignHeatPump(Office toOffice){
         HeatPump pump;
         int officeSize = toOffice.getSize();
+        String type = toOffice.getHeatingType();
         for (HeatPump p : heatPumps) {
             if(p.performance() == toOffice.getSize()){
-                toOffice.receive(p);
-                return p;
+                if(p.type().equals(type)){
+                    toOffice.receive(p);
+                    return p;
+                }
+
             }
         }
         for (HeatPump p : heatPumps) {
             if(p.performance() +1 == toOffice.getSize()){
-                toOffice.receive(p);
-                return p;
+                if(p.type().equals(type)){
+                    toOffice.receive(p);
+                    return p;
             }
         }
         System.out.println("Cannot assign heat pump to this office because there is no suiting heat pump in the inventory");
@@ -74,6 +79,7 @@ public class Inventory {
                 System.out.println("Available heat pump No." + counter + ": ");
                 System.out.println("Price: " + pump.price() + "€");
                 System.out.println("Performance level: " + pump.performance());
+                System.out.println("Type of pump: " + pump.type());
                 System.out.println();
             }
 
@@ -89,6 +95,7 @@ public class Inventory {
                 System.out.println("Price: " + pump.price() + "€");
                 System.out.println("Performance level: " + pump.performance());
                 System.out.println("Heat pump is installed in: " + pump.installedIn());
+                System.out.println("Type of pump" + pump.type());
                 System.out.println();
             }
 

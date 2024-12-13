@@ -7,6 +7,12 @@ public interface Office {
     /**
      * Büros sollen eindeutige Namen haben. Die Methode HeatPump.assignedIn() gibt dann diesen Namen als String zurück.
      */
+
+    /**
+     * Büros sollen speichern, ob sie eine Bodenheizung oder Rippenheizkörper haben. Die Methode getHeatingType() soll das
+     * als String zurückgeben. Bitte eindeutig sein, damit die Methode assignHeatPump in Inventory funktioniert.
+     */
+
     /**
      * Größe des Büros soll als int variable gespeichert werden!
      * 1 - kleines Büro

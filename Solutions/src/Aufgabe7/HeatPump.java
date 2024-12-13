@@ -21,4 +21,9 @@ public interface HeatPump {
      * die Methode state() soll diesen Int zurückgeben
      */
 
+    /**
+     * Die Methode type() soll nur speicern, ob es eine Niedertemperaturpumpe oder eine Hochtemperaturpumpe ist und das
+     * als String zurückgeben. Bitte eindeutig sein (=selber String, der in Office.getHeatingType() zurückgegeben wird),
+     * damit die Methode assignHeatPump funktioniert.
+     */
 }
