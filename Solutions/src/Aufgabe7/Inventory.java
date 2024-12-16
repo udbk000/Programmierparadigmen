@@ -3,6 +3,7 @@ package Aufgabe7;
 import java.util.LinkedList;
 import java.util.List;
 
+@Verantwortlich(name = "Usaid Al-Dabak", mnr = 12216291)
 public class Inventory {
     List<HeatPump> heatPumps = new LinkedList<>();
 
