@@ -1,11 +1,14 @@
-package Aufgabe8;
-
 /**
  * Test.java - Hauptklasse für die Optimierung der Würfelanordnung.
  * Ziel: Demonstration der Optimierung mit verschiedenen Bewertungsfunktionen
  * im funktionalen Paradigma.
  */
+import Aufgabe8.Cube;
+import Aufgabe8.CubePlacer;
+import Aufgabe8.CubeStructure;
+
 import java.util.*;
+import java.util.function.ToDoubleFunction;
 import java.util.stream.*;
 
 public class Test {
@@ -17,9 +20,9 @@ public class Test {
         int m = 5; // Maximale Höhe
         int k = 5; // Anzahl zurückzugebender Lösungen
 
-        // Verschiedene Bewertungsfunktionen definieren
-        Evaluator thermalEvaluator = Evaluator::thermalEvaluation;
-        Evaluator customEvaluator = Evaluator::customEvaluation;
+        // Verschiedene Bewertungsfunktionen direkt implementieren
+        ToDoubleFunction<CubeStructure> thermalEvaluator = structure -> structure.cubes.stream().mapToDouble(Test::evaluateCubeThermal).sum();
+        ToDoubleFunction<CubeStructure> customEvaluator = structure -> structure.cubes.stream().mapToDouble(cube -> 1.0 / (cube.z + 1)).sum();
 
         // Optimierungsläufe mit verschiedenen Parametern und Evaluationsmethoden
         for (int i = 0; i < nValues.length; i++) {
@@ -33,5 +36,11 @@ public class Test {
         List<CubeStructure> alternativeSolutions = CubePlacer.findBestStructures(15, 5, 5, customEvaluator);
         System.out.println("Alternative Bewertungsfunktion:");
         alternativeSolutions.forEach(s -> System.out.println(s.toString()));
+    }
+
+    private static double evaluateCubeThermal(Cube cube) {
+        double score = 0.0;
+        if (cube.z == 0) score += 1.0;
+        return score;
     }
 }
