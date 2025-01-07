@@ -1,10 +1,8 @@
 package Aufgabe7;
 
-@Verantwortlich(name = "Andrii Makarenko", mnr = 12229205)
+/**
+ * Abstract class to describe all methods that every type of heatpump implements.
+ */
 public interface HeatPump {
-    int performance();
-    int state();
-    String type();
-    void setAvailability(int state);
-    int price();
+
 }
