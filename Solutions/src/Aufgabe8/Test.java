@@ -1,3 +1,5 @@
+package Aufgabe8;
+
 /**
  * Test.java - Hauptklasse für die Optimierung der Würfelanordnung.
  * Ziel: Demonstration der Optimierung mit verschiedenen Bewertungsfunktionen
