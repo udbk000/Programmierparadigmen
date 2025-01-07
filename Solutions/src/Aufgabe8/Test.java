@@ -1,5 +1,8 @@
 package Aufgabe8;
-
+/**
+ * Wer hat was gemacht?
+ *
+ */
 /**
  * Test.java - Hauptklasse für die Optimierung der Würfelanordnung.
  * Ziel: Demonstration der Optimierung mit verschiedenen Bewertungsfunktionen
@@ -12,6 +15,8 @@ import Aufgabe8.CubeStructure;
 import java.util.*;
 import java.util.function.ToDoubleFunction;
 import java.util.stream.*;
+
+
 
 public class Test {
     public static void main(String[] args) {
