@@ -8,6 +8,22 @@ package Aufgabe8;
  * Ziel: Demonstration der Optimierung mit verschiedenen Bewertungsfunktionen
  * im funktionalen Paradigma.
  */
+
+
+public class Test {
+
+    //TODO 3 verschiedene Test Cases mit n m k unterschiedlich
+    public static void main(String[] args) {
+        var sols = Solution.execute(100,100,10).toList();
+        for (var x : sols)
+        {
+            System.out.println(x.toJSON());
+        }
+    }
+}
+
+
+/*
 import Aufgabe8.Cube;
 import Aufgabe8.CubePlacer;
 import Aufgabe8.CubeStructure;
@@ -51,3 +67,4 @@ public class Test {
         return score;
     }
 }
+*/
