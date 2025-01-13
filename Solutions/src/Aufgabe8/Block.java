@@ -56,11 +56,6 @@ public class Block {
         return alreadySet.contains(position.plus(down));
     }
 
-
-
-
-
-
     public Coordinate getPosition() {
         return position;
     }

@@ -11,7 +11,6 @@ package Aufgabe8;
 
 
 public class Test {
-
     //TODO 3 verschiedene Test Cases mit n m k unterschiedlich
     public static void main(String[] args) {
         var sols = Solution.execute(100,100,10).toList();
@@ -21,7 +20,6 @@ public class Test {
         }
     }
 }
-
 
 /*
 import Aufgabe8.Cube;
