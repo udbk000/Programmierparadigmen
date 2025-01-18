@@ -1,5 +1,5 @@
 package Aufgabe9;
-
+/**https://chatgpt.com/share/678be650-2498-800c-86a6-79bbfc7e3fb0
 /*
 Wer hat was gemacht?
 Gruppenmitglied 1: Design und Implementierung der Datenstrukturen für das Wegenetz und Personen.
