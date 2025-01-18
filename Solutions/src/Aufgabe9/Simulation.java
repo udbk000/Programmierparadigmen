@@ -4,12 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+/**
+ * Die Simulation steuert die Bewegungen von Personen auf einem Fluchtwegenetz.
+ * Es wird überprüft, ob Personen den Sammelpunkt erreichen, und deren Daten
+ * werden gesammelt.
+ */
 public class Simulation {
     private final Wegenetz wegenetz;          // Das Wegenetz
     private final List<Thread> personThreads; // Liste aller Personen-Threads
     private final Sammelpunkt sammelpunkt;    // Der Sammelpunkt für die Personen
     private final int maxWaitSteps = 64;      // Maximale Anzahl von Warteschritten
 
+    /**
+     * Initialisiert eine neue Simulation mit einem Wegenetz und einer Anzahl von Personen.
+     *
+     * @param layout      2D-Array, das das Wegenetz beschreibt.
+     * @param personCount Anzahl der Personen in der Simulation (muss > 0 sein).
+     *
+     * Vorbedingung: `layout` muss ein gültiges Rechteck sein; `personCount > 0`.
+     * Nachbedingung: Die Simulation ist initialisiert, Personen sind zufällig positioniert.
+     */
     public Simulation(String[] layout, int personCount) {
         this.wegenetz = new Wegenetz(layout); // Wegenetz initialisieren
         this.sammelpunkt = new Sammelpunkt(); // Sammelpunkt erstellen
@@ -18,7 +32,14 @@ public class Simulation {
         initializePersons(personCount); // Personen initialisieren
     }
 
-    // Personen initialisieren und als Threads starten
+    /**
+     * Initialisiert Personen mit zufälligen Startpositionen im Wegenetz.
+     *
+     * @param personCount Anzahl der zu erstellenden Personen.
+     *
+     * Vorbedingung: `personCount > 0`.
+     * Nachbedingung: Personen sind im Wegenetz initialisiert.
+     */
     private void initializePersons(int personCount) {
         Random random = new Random();
 
@@ -39,7 +60,11 @@ public class Simulation {
         }
     }
 
-    // Simulation starten
+    /**
+     * Startet die Simulation und wartet auf den Abschluss aller Personen-Threads.
+     *
+     * Nachbedingung: Ergebnisse sind in der Datei `test.out` gespeichert.
+     */
     public void start() {
         // Alle Threads starten
         for (Thread thread : personThreads) {
@@ -59,7 +84,14 @@ public class Simulation {
         sammelpunkt.saveToFile("test.out");
     }
 
-    // Logik für die Bewegung einer einzelnen Person
+    /**
+     * Simuliert die Bewegung einer einzelnen Person auf dem Wegenetz.
+     *
+     * @param person Die zu simulierende Person.
+     *
+     * Vorbedingung: `person` muss gültige Startkoordinaten besitzen.
+     * Nachbedingung: Die Person erreicht den Sammelpunkt oder überschreitet die maximale Wartezeit.
+     */
     private void simulatePerson(Person person) {
         int xL = person.getLeftFoot()[0];
         int yL = person.getLeftFoot()[1];
@@ -120,7 +152,15 @@ public class Simulation {
         }
     }
 
-    // Berechnung der gültigen Bewegungen
+
+    /**
+     * Berechnet alle möglichen Bewegungen für eine Person.
+     *
+     * @param xL, yL, xR, yR Position der Füße der Person.
+     *
+     * Vorbedingung: Gültige Koordinaten werden übergeben.
+     * Nachbedingung: Gibt eine Liste von gültigen Bewegungen zurück.
+     */
     private List<int[]> calculateValidMoves(int xL, int yL, int xR, int yR) {
         List<int[]> validMoves = new ArrayList<>();
         int[][] directions = {

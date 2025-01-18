@@ -3,12 +3,24 @@ package Aufgabe9;
 import java.util.LinkedList;
 import java.util.Queue;
 
+/**
+ * Repräsentiert das Wegenetz der Fluchtweg-Simulation.
+ * Besteht aus quadratischen Feldern mit Richtungsinformationen.
+ */
 public class Wegenetz {
     private final char[][] grid; // Originales Layout
-    private final char[][] directions; // Richtungsfelder
+    private final char[][] directions; // Richtungspfeile
     private final int rows;
     private final int cols;
 
+    /**
+     * Erstellt ein Wegenetz aus einem Layout.
+     *
+     * @param layout  Array von Strings, das das Wegenetz beschreibt.
+     *
+     * Vorbedingung: Alle Strings müssen gleich lang sein.
+     * Nachbedingung: Das Wegenetz ist initialisiert, und die Richtungen wurden berechnet.
+     */
     public Wegenetz(String[] layout) {
         this.rows = layout.length;
         this.cols = layout[0].length();
@@ -25,7 +37,11 @@ public class Wegenetz {
         calculateDirections();
     }
 
-    // BFS zur Berechnung der Richtungen
+    /**
+     * Berechnet die kürzesten Wege von jedem Feld zum Sammelpunkt und setzt die Richtungspfeile.
+     *
+     * Nachbedingung: Alle Felder zeigen zum nächsten Sammelpunkt.
+     */
     private void calculateDirections() {
         Queue<int[]> queue = new LinkedList<>();
 
@@ -96,6 +112,15 @@ public class Wegenetz {
         return cols;
     }
 
+    /**
+     * Prüft, ob ein Feld ein Sammelpunkt ist.
+     *
+     * @param x  Zeilenkoordinate des Feldes.
+     * @param y  Spaltenkoordinate des Feldes.
+     * @return `true`, wenn das Feld ein Sammelpunkt ist, sonst `false`.
+     *
+     * Vorbedingung: `x` und `y` müssen gültige Koordinaten sein.
+     */
     public synchronized boolean isAccessPoint(int x, int y) {
         if (x >= 0 && x < rows && y >= 0 && y < cols) {
             return grid[x][y] == 'S'; // Prüfen, ob das Feld ein Sammelpunkt ist

@@ -1,16 +1,30 @@
 package Aufgabe9;
 
 import java.io.Serializable;
-
+/**
+ * Repräsentiert eine Person in der Fluchtweg-Simulation.
+ * Jede Person hat zwei Füße auf benachbarten Feldern, eine ID,
+ * sowie Zähler für Bewegungen und Warteschritte.
+ */
 public class Person implements Serializable {
     private final int id;     // Eindeutige ID der Person
-    private int moves;        // Anzahl der Bewegungen
+    private int moves;        // Anzahl der erfolgreichen Bewegungen
     private int waits;        // Anzahl der Warteschritte
-
     private int xL, yL;       // Position des linken Fußes
     private int xR, yR;       // Position des rechten Fußes
 
-    // Konstruktor: Initialisiert die Person mit ihrer ID und Startpositionen
+    /**
+     * Erstellt eine neue Person mit ihrer ID und Startpositionen.
+     *
+     * @param id  Eindeutige Identifikationsnummer der Person (muss positiv sein).
+     * @param xL  X-Koordinate des linken Fußes (muss >= 0 sein).
+     * @param yL  Y-Koordinate des linken Fußes (muss >= 0 sein).
+     * @param xR  X-Koordinate des rechten Fußes (muss >= 0 sein).
+     * @param yR  Y-Koordinate des rechten Fußes (muss >= 0 sein).
+     *
+     * Vorbedingung: `xL`, `yL`, `xR`, `yR` müssen benachbarte Felder beschreiben.
+     * Nachbedingung: Die Person ist mit den angegebenen Startwerten initialisiert.
+     */
     public Person(int id, int xL, int yL, int xR, int yR) {
         this.id = id;
         this.moves = 0; // Anfangs keine Bewegungen
@@ -21,7 +35,17 @@ public class Person implements Serializable {
         this.yR = yR;   // Y-Position des rechten Fußes
     }
 
-    // Synchronisierte Methode, um die Position der Person zu aktualisieren
+    /**
+     * Bewegt die Person auf neue benachbarte Felder.
+     *
+     * @param newXL X-Koordinate des linken Fußes (muss gültig sein).
+     * @param newYL Y-Koordinate des linken Fußes (muss gültig sein).
+     * @param newXR X-Koordinate des rechten Fußes (muss gültig sein).
+     * @param newYR Y-Koordinate des rechten Fußes (muss gültig sein).
+     *
+     * Vorbedingung: Die neuen Koordinaten müssen benachbarte Felder beschreiben.
+     * Nachbedingung: Die Position der Füße ist aktualisiert, und der Bewegungscounter wurde erhöht.
+     */
     public synchronized void move(int newXL, int newYL, int newXR, int newYR) {
         this.xL = newXL;
         this.yL = newYL;
@@ -30,37 +54,65 @@ public class Person implements Serializable {
         this.moves++; // Bewegungsschritt zählen
     }
 
-    // Synchronisierte Methode, um einen Warteschritt zu zählen
+    /**
+     * Inkrementiert den Warteschrittzähler der Person.
+     *
+     * Nachbedingung: Der Warteschrittzähler wurde um 1 erhöht.
+     */
     public synchronized void waitStep() {
         this.waits++;
     }
 
-    // Getter für die Anzahl der Bewegungen
+    /**
+     * Gibt die Anzahl der Bewegungen der Person zurück.
+     *
+     * @return Bewegungszähler.
+     */
     public int getMoves() {
         return moves;
     }
 
-    // Getter für die Anzahl der Warteschritte
+    /**
+     * Gibt die Anzahl der Warteschritte der Person zurück.
+     *
+     * @return Warteschrittezähler.
+     */
     public int getWaits() {
         return waits;
     }
 
-    // Getter für die ID der Person
+    /**
+     * Gibt die ID der Person zurück.
+     *
+     * @return ID der Person.
+     */
     public int getId() {
         return id;
     }
 
-    // Getter für die Position des linken Fußes
+    /**
+     * Gibt die Position des linken Fußes zurück.
+     *
+     * @return Ein Array mit [xL, yL].
+     */
     public int[] getLeftFoot() {
         return new int[]{xL, yL};
     }
 
-    // Getter für die Position des rechten Fußes
+    /**
+     * Gibt die Position des rechten Fußes zurück.
+     *
+     * @return Ein Array mit [xR, yR].
+     */
     public int[] getRightFoot() {
         return new int[]{xR, yR};
     }
 
-    // ToString-Methode für Debugging und Ausgabe
+    /**
+     * Liefert eine lesbare Darstellung der Person.
+     *
+     * @return String mit ID, Bewegungs- und Warteschritten sowie Fußpositionen.
+     */
     @Override
     public String toString() {
         return String.format(
