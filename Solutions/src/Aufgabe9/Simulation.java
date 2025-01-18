@@ -47,8 +47,8 @@ public class Simulation {
             // Zufällige Startposition generieren
             int xL, yL, xR, yR;
             do {
-                xL = random.nextInt(wegenetz.getRows());
-                yL = random.nextInt(wegenetz.getCols());
+                xL = random.nextInt(Math.max(wegenetz.getRows()-1, 0));
+                yL = random.nextInt(Math.max(wegenetz.getCols()-1,0));
                 xR = xL;
                 yR = yL + 1; // Rechte Fußposition ist benachbart
             } while (!wegenetz.isFieldFree(xL, yL) || !wegenetz.isFieldFree(xR, yR));
