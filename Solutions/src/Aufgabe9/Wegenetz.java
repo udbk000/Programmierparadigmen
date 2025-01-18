@@ -31,7 +31,7 @@ public class Wegenetz {
 
         // Sammelpunkte in die Queue einfügen
         for (int i = 0; i < rows; i++) {
-            for (int j = 0; j < cols; j++) {
+            for (int j = 0; j < cols - 1; j++) {
                 if (grid[i][j] == 'S') {
                     queue.add(new int[]{i, j});
                     directions[i][j] = 'S';
