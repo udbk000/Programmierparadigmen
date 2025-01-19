@@ -40,13 +40,21 @@ public class Test {
 
         // Test 1
         System.out.println("Starte Simulation 1...");
-        Simulation simulation1 = new Simulation(layout1, 5);
+        Simulation simulation1 = new Simulation(layout1, 10);
         simulation1.start();
 
         // Test 2
         System.out.println("Starte Simulation 2...");
-        Simulation simulation2 = new Simulation(layout2, 10);
+        Simulation simulation2 = new Simulation(layout2, 5);
         simulation2.start();
+
+        try {
+            Thread.sleep(10000);
+            simulation1.killAllAfterTenSec();
+            simulation2.killAllAfterTenSec();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }
 

@@ -43,6 +43,7 @@ public class Sammelpunkt {
      */
     public void saveToFile(String fileName) {
         try (FileWriter writer = new FileWriter(fileName)) {
+            writer.write("Hello World!\n");
             for (Person person : sammlung) {
                 writer.write(person.toString() + "\n");
             }

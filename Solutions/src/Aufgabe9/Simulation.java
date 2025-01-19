@@ -9,7 +9,7 @@ import java.util.Random;
  * Es wird überprüft, ob Personen den Sammelpunkt erreichen, und deren Daten
  * werden gesammelt.
  */
-public class Simulation {
+public class Simulation extends Thread {
     private final Wegenetz wegenetz;          // Das Wegenetz
     private final List<Thread> personThreads; // Liste aller Personen-Threads
     private final Sammelpunkt sammelpunkt;    // Der Sammelpunkt für die Personen
@@ -55,7 +55,14 @@ public class Simulation {
 
             // Person erstellen
             Person person = new Person(i + 1, xL, yL, xR, yR);
-            Thread thread = new Thread(() -> simulatePerson(person));
+
+            // Runnable für die Person erstellen
+            Runnable personTask = () -> simulatePerson(person);
+
+            // Thread explizit erstellen und speichern
+            Thread thread = new Thread(personTask);
+            String threadNameIsID = String.format("%d", person.getId());
+            thread.setName(threadNameIsID);
             personThreads.add(thread);
         }
     }
@@ -65,7 +72,8 @@ public class Simulation {
      *
      * Nachbedingung: Ergebnisse sind in der Datei `test.out` gespeichert.
      */
-    public void start() {
+    @Override
+    public void run() {
         // Alle Threads starten
         for (Thread thread : personThreads) {
             thread.start();
@@ -135,6 +143,11 @@ public class Simulation {
                     // Warten, wenn keine Bewegung möglich
                     person.waitStep();
                     if (person.getWaits() >= maxWaitSteps) {
+                        for (Thread thread : personThreads) {
+                            if (thread.getName().equals(person.getId())) {
+                                thread.interrupt();
+                            }
+                        }
                         break; // Maximal erlaubte Warteschritte erreicht
                     }
                     try {
@@ -193,5 +206,11 @@ public class Simulation {
                 !(newXR == oldXR && newYR == oldYR) &&
                 Math.abs(newXL - newXR) <= 1 &&
                 Math.abs(newYL - newYR) <= 1);
+    }
+
+    public void killAllAfterTenSec() {
+        for (Thread thread : personThreads) {
+            thread.interrupt();
+        }
     }
 }

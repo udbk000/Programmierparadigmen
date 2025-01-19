@@ -86,10 +86,9 @@ public class Wegenetz {
     }
 
     public synchronized boolean isFieldFree(int x, int y) {
-        if (x < grid.length && y < grid.length && x >0 && y > 0){
+        if (x < grid.length && y < grid.length && x > 0 && y > 0){
             return grid[x][y] == '.';
         } else return false;
-
     }
 
     public synchronized void occupyField(int x, int y, char symbol) {
