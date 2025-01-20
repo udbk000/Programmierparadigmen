@@ -1,7 +1,7 @@
 package Aufgabe9;
 /*
 Wer hat was gemacht?
-Gruppenmitglied 1: Design und Implementierung der Datenstrukturen für das Wegenetz und Personen.
+12216291, Usaid Al-Dabak: Design und Implementierung der Datenstrukturen für das Wegenetz und Personen.
 12327076, Stefan Slanar: Entwicklung der Logik für die Bewegungen und die Synchronisation der Threads.
 Gruppenmitglied 3: Umsetzung der Interprozesskommunikation (Serialisierung/Deserialisierung) und des Testprogramms.
  */
